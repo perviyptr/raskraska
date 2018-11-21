@@ -1245,8 +1245,8 @@ for(let i = 0; i < kartinki.length; ++i){
 var t; //прокрутка вверх по клику на картинке
 function up() {
   var top = Math.max(document.body.scrollTop,document.documentElement.scrollTop);
-  if(top > 500) {
-    window.scrollBy(0,-100);
+  if(top > 800) {
+    window.scrollBy(0,-50);
     t = setTimeout('up()',20);
   } else clearTimeout(t);
   return false;
