@@ -272,6 +272,12 @@ i{
   text-align: left;
 }
 
+.color-panel {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
 .color {
   border: none;
 }
@@ -312,7 +318,7 @@ i{
 #дляВыключателяНомеров{
   width: 100%;
   height: 20px;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 #дляВыключателяНомеров:hover{
   cursor: pointer;
@@ -378,33 +384,12 @@ i{
 
 <div class="panel">
   <div id="дляВыборщикаЦветов">
-  <input class="color" type="text">
   <p class="colorpicker"></p>
   </div>
-  <script>
-    const colorInput = document.querySelector('input.color');
-    const выборщикЦветов = new CP(colorInput, false, document.querySelector('.colorpicker'));
-
-    выборщикЦветов.on('change', color => {
-        colorInput.value = '#' + color;
-        colorInput.style.backgroundColor = '#' + color;
-
-        currentColor = '#' + color;
-        cvet_zalivki = rgbToHex.apply(null, CP.HEX2RGB(color));
-
-        if (currentMode !== 'lastik') {
-          ctx.strokeStyle = currentColor;
-        }
-    });
-
-    выборщикЦветов.fit = function () {
-        this.self.style.left = this.self.style.top = "";
-    };
-
-    выборщикЦветов.self.classList.add('static');
-    выборщикЦветов.enter();
-  </script>
   <div class="paneli">
+    <div class="color-panel">
+      <input class="color" type="text">
+    </div>
     <img class="cvet panel-button panel-button-current" src="Ris12/cherniy_karandash.jpg">
     <img class="cvet panel-button" src="Ris12/seriy_karandash.jpg">
     <img class="cvet panel-button" src="Ris12/krasniy_karandash.jpg">
@@ -1042,6 +1027,28 @@ i{
 
 <script type="text/javascript">
 
+const colorInput = document.querySelector('input.color');
+const выборщикЦветов = new CP(colorInput, false, document.querySelector('.colorpicker'));
+
+выборщикЦветов.on('change', color => {
+    colorInput.value = '#' + color;
+    colorInput.style.backgroundColor = '#' + color;
+
+    currentColor = '#' + color;
+    cvet_zalivki = rgbToHex.apply(null, CP.HEX2RGB(color));
+
+    if (currentMode !== 'lastik') {
+      ctx.strokeStyle = currentColor;
+    }
+});
+
+выборщикЦветов.fit = function () {
+    this.self.style.left = this.self.style.top = "";
+};
+
+выборщикЦветов.self.classList.add('static');
+выборщикЦветов.enter();
+
 var mouseDown = false;
 var currentMode = 'fill';
 const canvas = document.getElementById('canvas');
@@ -1244,11 +1251,7 @@ for(let i = 0; i < kartinki.length; ++i){
 
 var t; //прокрутка вверх по клику на картинке
 function up() {
-  var top = Math.max(document.body.scrollTop,document.documentElement.scrollTop);
-  if(top > 800) {
-    window.scrollBy(0,-50);
-    t = setTimeout('up()',20);
-  } else clearTimeout(t);
+  window.scrollTo(0, 750);
   return false;
 }
 
