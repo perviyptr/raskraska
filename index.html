@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+
+  <title>Раскраска картинок онлайн</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-117113579-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-117113579-2');
+
+</script>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter50410572 = new Ya.Metrika2({
+                    id:50410572,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true
+                });
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/tag.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks2");
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/50410572" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+  <link href="color-picker-master/color-picker.min.css" rel="stylesheet"> <!-- подключение библиотеки выборщика цветов -->
+  <script src="color-picker-master/color-picker.js"></script> <!-- запуск библиотеки подборщика цветов -->
+
+  <style type="text/css">
+
+body{
+  background-image: url('Ris12/фон.png');
+  font-family: sans-serif;
+}
+
+#canvas-container {
+  position: relative;
+  width: 550px;
+  height: 550px;
+  max-width: 1000px;
+}
+
+.canvas{
+  border: 2px solid rgb(212, 8, 161);
+  border-radius: 10px;
+  cursor: pointer;
+  background-image: url('Ris12/Фон3.jpg');
+  z-index: 10;
+  max-width: 1000px;
+  position: absolute;
+}
+
+.paneli {
+   width: 290px;
+   text-align: center;
+   color: rgb(99, 5, 99);
+   display: flex;
+   flex-direction:row;
+   justify-content: space-between;
+   flex-wrap: wrap;
+   align-items: center;
+}
+
+.paneli2 {
+   width: 500px;
+   text-align: center;
+   color: rgb(99, 5, 99);
+   background-color: rgb(247, 215, 247);
+   display: flex;
+   flex-direction:row;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.dla_odnogo_instrumenta{
+  width: 20%;
+}
+
+.cvet, .paneli2 .panel-button {
+  width: 35px;
+  height: 35px;
+  margin: 3px;
+  margin-right: 10px;
+  margin-bottom: 7px;
+  border: 2px groove rgb(250, 7, 222);
+  box-shadow: 0 5px 5px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  cursor: pointer;
+}
+
+.cvet:hover, .paneli2 .panel-button:hover {
+  border: solid 2px rgb(255,255,255);
+  background: white;
+}
+
+.obchaja_ramka{
+  width: 1200px;
+  display: flex;
+  flex-direction:row;
+  justify-content: center;
+  align-items: flex-start;
+  margin: auto;
+}
+
+.dla_risunkov{
+  width:450px;
+  height: 850px;
+  display: flex;
+  flex-direction:column;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap:wrap;
+  align-content:space-around;
+  border: solid 1px rgb(227, 32, 90);
+  box-shadow: 0 28px 56px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  background: rgb(212, 122, 250);
+  background:  radial-gradient(rgb(212, 122, 250), rgb(124, 184, 252), rgb(248, 252, 124));
+  background:  -webkit-radial-gradient(rgb(212, 122, 250), rgb(124, 184, 252), rgb(248, 252, 124));
+  background:  -moz-radial-gradient(rgb(212, 122, 250), rgb(124, 184, 252), rgb(248, 252, 124));
+}
+
+#dla_canvasa_i_paneley{
+  width: 500px;
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 28px 56px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  background-color: rgb(255,255,255);
+  margin-bottom: 50px;
+}
+
+.kartinki {
+   width: 130px;
+   height: 130px;
+   cursor: pointer;
+   margin: 15px 15px;
+   background-color: rgb(213, 247, 237);
+   border-radius: 10px;
+   z-index: 5;
+}
+
+.kartinki:hover{
+  background-color: rgb(222, 202, 237);
+  box-shadow: 0 5px 5px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+#zagolovok{
+  color: rgb(2247, 15, 232);
+  text-shadow: 0 5px 5px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  text-align: center;
+  font-size: 20pt;
+}
+#zagolovok2{
+  color: rgb(109, 5, 133);
+  text-shadow: 0 5px 5px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  text-align: center;
+  font-size: 20pt;
+}
+.kategorija_podborok{
+  color: rgb(109, 5, 133);
+  cursor: pointer;
+  font-size: 20px;
+  margin-left: 30px;
+}
+.kategorija_podborok:hover{
+   color: rgb(5, 79, 21);
+}
+.nadpisi_k_panelam{
+  font-size: 14pt;
+  color: rgb(77, 3, 58);
+  margin: 5px;
+}
+
+a{
+  text-decoration: none;
+  color: rgb(77, 3, 58);
+}
+a:hover{
+  color: rgb(245, 61, 199);
+}
+#nadpis_pod_zagolovkom{
+  color: rgb(77, 3, 58);
+  margin-top: 0;
+}
+i{
+   color: rgb(212, 8, 161);
+}
+
+.panel-button-current {
+  outline: 5px solid red;
+}
+
+.nizniy_dla_kartinok{
+  width: 1200px;
+  display: none;
+  flex-direction:row;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap:wrap;
+  align-content:space-around;
+  margin: auto;
+  border: double 10px rgb(212, 122, 250);
+  background: rgb(212, 122, 250);
+  background:  radial-gradient(rgb(212, 122, 250), rgb(124, 184, 252), rgb(248, 252, 124));
+  background:  -webkit-radial-gradient(rgb(212, 122, 250), rgb(124, 184, 252), rgb(248, 252, 124));
+  background:  -moz-radial-gradient(rgb(212, 122, 250), rgb(124, 184, 252), rgb(248, 252, 124));
+  box-shadow: 0 5px 5px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.ssilka{
+  text-align: center;
+  color: rgb(52, 84, 6);
+  margin-top: 30px;
+  margin-bottom: 5px;
+  font-style: italic;
+}
+
+#blagodarnost{
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.flex{
+  display: flex;
+}
+
+.hidden{
+  display: none;
+}
+
+#dla_verhn_ris{
+  width: 1200px;
+  margin: auto;
+  border: solid 1px rgb(227, 32, 90);
+}
+#verhn_ris{
+  width: 100%;
+  margin: auto;
+}
+.dla_kategoriy_podborok{
+  width: 1200px;
+  margin: 20px auto;
+  border: solid 1px red;
+  border-radius: 10px;
+  box-shadow: 0 5px 5px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  text-align: left;
+}
+
+.color {
+  border: none;
+}
+
+.color-picker.static {
+  display:inline-block;
+  position:static;
+}
+.color-picker.static .color-picker-container {
+  -webkit-box-shadow:none;
+  -moz-box-shadow:none;
+  box-shadow:none;
+  cursor: pointer;
+}
+.panel{
+  width: 100%;
+  display: flex;
+  flex-direction:row;
+  justify-content: space-between;
+  align-items: center;
+}
+#дляВыборщикаЦветов{
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+}
+#ochistit{
+  text-align: center;
+  width: 100%;
+  background: rgb(212, 122, 250);
+}
+#canvas-overlay {
+  position: absolute;
+  pointer-events: none;
+  z-index: 11;
+}
+#дляВыключателяНомеров{
+  width: 100%;
+  height: 20px;
+  margin-top: 30px;
+}
+#дляВыключателяНомеров:hover{
+  cursor: pointer;
+}
+
+  </style>
+</head>
+
+
+
+<body>
+
+<div id="dla_verhn_ris">
+   <img id="verhn_ris" src="Ris12/verhn_ris2.png">
+</div>
+
+<div class="obchaja_ramka">
+<div class="dla_risunkov">
+  <img class="kartinki" src="Ris12/1.png">
+  <img class="kartinki" src="Ris12/476.png">
+  <img class="kartinki" src="Ris12/3.png">
+  <img class="kartinki" src="Ris12/4.png">
+  <img class="kartinki" src="Ris12/5.png">
+  <img class="kartinki" src="Ris12/6.png">
+  <img class="kartinki" src="Ris12/7.png">
+  <img class="kartinki" src="Ris12/8.png">
+  <img class="kartinki" src="Ris12/9.png">
+  <img class="kartinki" src="Ris12/10.png">
+</div>
+
+<div id="dla_canvasa_i_paneley" onmousedown="return false" onselectstart="return false">
+
+  <h1 id="zagolovok">РАСКРАСКА КАРТИНОК</h1>
+  <ul id="nadpis_pod_zagolovkom">
+    <li>Выбирайте любую картинку на фоне страницы левой кнопкой мыши и раскрашивайте.</li>
+    <li>Можно нарисовать свой рисунок или добавить своё изображение<br> к вставленному.<br>
+    Для этого включите режим <i>Рисование линий</i>.</li>
+    <li>Для сохранения картинки щёлкните правой кнопкой мыши на холсте и выберите
+      <i>Сохраниь картинку как</i>...</li>
+    <li>Для выбора цвета по образцу использовать пипетку (или щелчок по выбранному цвету на изображении с нажатой средней кнопкой мыши).</li>
+    <li>Для увеличения изображения на холсте пользуйтесь колёсиком мыши с нажатой клавишей "Ctrl".</li>
+    <li>Ниже находится много тематических подборок картинок для раскраски.
+    Подборки раскрываютя и свёртываются щелчком мыши по названию подборки.</li>
+  </ul>
+<div class="paneli2 panel">
+  <div class="dla_odnogo_instrumenta">
+    <p class="nadpisi_k_panelam">Линия</p>
+    <img class="panel-button" data-mode="paint" src="Ris12/linija.jpg">
+   </div>
+   <div class="dla_odnogo_instrumenta">
+    <p class="nadpisi_k_panelam">Заливка</p>
+    <img class="panel-button panel-button-current" data-mode="fill" src="Ris12/cherniy_karandash.jpg">
+    </div>
+  <div class="dla_odnogo_instrumenta">
+    <p class="nadpisi_k_panelam">Пипетка</p>
+    <img class="panel-button" id="pipetka" data-mode="pipetka" src="Ris12/pipetka.png">
+   </div>
+  <div class="dla_odnogo_instrumenta">
+    <p class="nadpisi_k_panelam">Ластик</p>
+    <img class="panel-button" id="lastik" data-mode="lastik" src="Ris12/lastik.jpg">
+  </div>
+   </div>
+
+<div class="panel">
+  <div id="дляВыборщикаЦветов">
+  <input class="color" type="text">
+  <p class="colorpicker"></p>
+  </div>
+  <script>
+    const colorInput = document.querySelector('input.color');
+    const выборщикЦветов = new CP(colorInput, false, document.querySelector('.colorpicker'));
+
+    выборщикЦветов.on('change', color => {
+        colorInput.value = '#' + color;
+        colorInput.style.backgroundColor = '#' + color;
+
+        currentColor = '#' + color;
+        cvet_zalivki = rgbToHex.apply(null, CP.HEX2RGB(color));
+
+        if (currentMode !== 'lastik') {
+          ctx.strokeStyle = currentColor;
+        }
+    });
+
+    выборщикЦветов.fit = function () {
+        this.self.style.left = this.self.style.top = "";
+    };
+
+    выборщикЦветов.self.classList.add('static');
+    выборщикЦветов.enter();
+  </script>
+  <div class="paneli">
+    <img class="cvet panel-button panel-button-current" src="Ris12/cherniy_karandash.jpg">
+    <img class="cvet panel-button" src="Ris12/seriy_karandash.jpg">
+    <img class="cvet panel-button" src="Ris12/krasniy_karandash.jpg">
+    <img class="cvet panel-button" src="Ris12/oranjeviy_karandash.jpg">
+    <img class="cvet panel-button" src="Ris12/jeltiy_karandash.jpg">
+    <img class="cvet panel-button" src="Ris12/zeleniy_karandash.jpg">
+    <img class="cvet panel-button" src="Ris12/goluboy_karandash.jpg">
+    <img class="cvet panel-button" src="Ris12/siniy_karandash.jpg">
+    <img class="cvet panel-button" src="Ris12/fioletoviy_karandash.jpg">
+    <img class="cvet panel-button" src="Ris12/beliy_karandash.jpg">
+
+    <label id="дляВыключателяНомеров" class="hidden">
+      <input type="checkbox" id="выключательДляНомеров" checked autocomplete="off">
+      Показать номера
+    </label>
+
+  </div>
+
+</div>
+
+
+
+<div id="canvas-container">
+  <canvas id="canvas" class="canvas" width="550" height="550"></canvas>
+  <img id="canvas-overlay" width="550" height="550" src="" onerror="this.style.display='none'">
+</div>
+
+<div class="paneli">
+     <p id="ochistit" class="nadpisi_k_panelam"><a href="#clear">Очистить</a></p>
+</div>
+</div>
+
+<div class="dla_risunkov">
+    <img class="kartinki" src="Ris12/11.png">
+    <img class="kartinki" src="Ris12/12.png">
+    <img class="kartinki" src="Ris12/13.png">
+    <img class="kartinki" src="Ris12/14.png">
+    <img class="kartinki" src="Ris12/15.png">
+    <img class="kartinki" src="Ris12/16.png">
+    <img class="kartinki" src="Ris12/17.png">
+    <img class="kartinki" src="Ris12/463.png">
+    <img class="kartinki" src="Ris12/19.png">
+    <img class="kartinki" src="Ris12/20.png">
+
+</div>
+
+</div>
+
+
+<h1 id ="zagolovok2" onmousedown="return false" onselectstart="return false">ТЕМАТИЧЕСКИЕ ПОДБОРКИ РАСКРАСОК</h1>
+<div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
+<h1 class ="kategorija_podborok">1. Раскраски из мультфильмов «Маша и медведь», «Микки Маус», «Лунтик»,<br> «Малыш и Карлсон», «Ну погоди!», «Колобок», «Незнайка», «Барбоскины», «Мадагаскар»,<br> «Шрек», «Ледниковый период».</h1>
+
+</div>
+
+<div class="nizniy_dla_kartinok">
+    <img class="kartinki" data-src="Ris12/21.png">
+    <img class="kartinki" data-src="Ris12/22.png">
+    <img class="kartinki" data-src="Ris12/23.png">
+    <img class="kartinki" data-src="Ris12/24.png">
+    <img class="kartinki" data-src="Ris12/25.png">
+    <img class="kartinki" data-src="Ris12/26.png">
+    <img class="kartinki" data-src="Ris12/27.png">
+    <img class="kartinki" data-src="Ris12/28.png">
+    <img class="kartinki" data-src="Ris12/29.png">
+    <img class="kartinki" data-src="Ris12/30.png">
+    <img class="kartinki" data-src="Ris12/31.png">
+    <img class="kartinki" data-src="Ris12/32.png">
+    <img class="kartinki" data-src="Ris12/33.png">
+    <img class="kartinki" data-src="Ris12/34.png">
+    <img class="kartinki" data-src="Ris12/35.png">
+    <img class="kartinki" data-src="Ris12/36.png">
+    <img class="kartinki" data-src="Ris12/37.png">
+    <img class="kartinki" data-src="Ris12/38.png">
+    <img class="kartinki" data-src="Ris12/39.png">
+    <img class="kartinki" data-src="Ris12/40.png">
+    <img class="kartinki" data-src="Ris12/41.png">
+    <img class="kartinki" data-src="Ris12/42.png">
+    <img class="kartinki" data-src="Ris12/43.png">
+    <img class="kartinki" data-src="Ris12/44.png">
+    <img class="kartinki" data-src="Ris12/45.png">
+    <img class="kartinki" data-src="Ris12/46.png">
+    <img class="kartinki" data-src="Ris12/47.png">
+    <img class="kartinki" data-src="Ris12/48.png">
+</div>
+
+<div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
+<h1 class ="kategorija_podborok">2. Раскраски из мультфильмов «Рио», «Гадкий Я», «Соник Икс», «Скубл-ду», «Чип и Дейл»,<br> «Покемоны», «Три богатыря», «Винни-Пух».</h1>
+</div>
+
+
+<div class="nizniy_dla_kartinok">
+    <img class="kartinki" data-src="Ris12/49.png">
+    <img class="kartinki" data-src="Ris12/50.png">
+    <img class="kartinki" data-src="Ris12/51.png">
+    <img class="kartinki" data-src="Ris12/52.png">
+    <img class="kartinki" data-src="Ris12/53.png">
+    <img class="kartinki" data-src="Ris12/54.png">
+    <img class="kartinki" data-src="Ris12/55.png">
+    <img class="kartinki" data-src="Ris12/56.png">
+    <img class="kartinki" data-src="Ris12/57.png">
+    <img class="kartinki" data-src="Ris12/58.png">
+    <img class="kartinki" data-src="Ris12/59.png">
+    <img class="kartinki" data-src="Ris12/60.png">
+    <img class="kartinki" data-src="Ris12/61.png">
+    <img class="kartinki" data-src="Ris12/62.png">
+    <img class="kartinki" data-src="Ris12/63.png">
+    <img class="kartinki" data-src="Ris12/64.png">
+    <img class="kartinki" data-src="Ris12/65.png">
+    <img class="kartinki" data-src="Ris12/66.png">
+    <img class="kartinki" data-src="Ris12/67.png">
+    <img class="kartinki" data-src="Ris12/68.png">
+    <img class="kartinki" data-src="Ris12/69.png">
+    <img class="kartinki" data-src="Ris12/70.png">
+    <img class="kartinki" data-src="Ris12/71.png">
+    <img class="kartinki" data-src="Ris12/72.png">
+    <img class="kartinki" data-src="Ris12/73.png">
+    <img class="kartinki" data-src="Ris12/74.png">
+    <img class="kartinki" data-src="Ris12/75.png">
+    <img class="kartinki" data-src="Ris12/76.png">
+</div>
+
+<div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
+<h1 class ="kategorija_podborok">3. Раскраски из мультфильмов «Город героев» и «Даша Путешественница». </h1>
+</div>
+
+
+<div class="nizniy_dla_kartinok">
+    <img class="kartinki" data-src="Ris12/77.png">
+    <img class="kartinki" data-src="Ris12/78.png">
+    <img class="kartinki" data-src="Ris12/79.png">
+    <img class="kartinki" data-src="Ris12/80.png">
+    <img class="kartinki" data-src="Ris12/81.png">
+    <img class="kartinki" data-src="Ris12/82.png">
+    <img class="kartinki" data-src="Ris12/83.png">
+    <img class="kartinki" data-src="Ris12/84.png">
+    <img class="kartinki" data-src="Ris12/85.png">
+    <img class="kartinki" data-src="Ris12/86.png">
+    <img class="kartinki" data-src="Ris12/87.png">
+    <img class="kartinki" data-src="Ris12/88.png">
+    <img class="kartinki" data-src="Ris12/89.png">
+    <img class="kartinki" data-src="Ris12/90.png">
+    <img class="kartinki" data-src="Ris12/91.png">
+    <img class="kartinki" data-src="Ris12/92.png">
+    <img class="kartinki" data-src="Ris12/93.png">
+    <img class="kartinki" data-src="Ris12/94.png">
+    <img class="kartinki" data-src="Ris12/95.png">
+    <img class="kartinki" data-src="Ris12/96.png">
+    <img class="kartinki" data-src="Ris12/97.png">
+    <img class="kartinki" data-src="Ris12/98.png">
+    <img class="kartinki" data-src="Ris12/99.png">
+    <img class="kartinki" data-src="Ris12/100.png">
+    <img class="kartinki" data-src="Ris12/101.png">
+    <img class="kartinki" data-src="Ris12/102.png">
+    <img class="kartinki" data-src="Ris12/103.png">
+    <img class="kartinki" data-src="Ris12/104.png">
+</div>
+
+<div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
+<h1 class ="kategorija_podborok">4. Раскраски из мультфильмов «Друзья Ангелов», «Бэмби», «Простоквашино», «Пчёлка Майя», «Доктор Айболит», «Попугай Кеша».</h1>
+</div>
+
+
+<div class="nizniy_dla_kartinok">
+    <img class="kartinki" data-src="Ris12/105.png">
+    <img class="kartinki" data-src="Ris12/106.png">
+    <img class="kartinki" data-src="Ris12/107.png">
+    <img class="kartinki" data-src="Ris12/108.png">
+    <img class="kartinki" data-src="Ris12/109.png">
+    <img class="kartinki" data-src="Ris12/110.png">
+    <img class="kartinki" data-src="Ris12/111.png">
+    <img class="kartinki" data-src="Ris12/112.png">
+    <img class="kartinki" data-src="Ris12/113.png">
+    <img class="kartinki" data-src="Ris12/114.png">
+    <img class="kartinki" data-src="Ris12/115.png">
+    <img class="kartinki" data-src="Ris12/116.png">
+    <img class="kartinki" data-src="Ris12/117.png">
+    <img class="kartinki" data-src="Ris12/118.png">
+    <img class="kartinki" data-src="Ris12/119.png">
+    <img class="kartinki" data-src="Ris12/120.png">
+    <img class="kartinki" data-src="Ris12/121.png">
+    <img class="kartinki" data-src="Ris12/122.png">
+    <img class="kartinki" data-src="Ris12/123.png">
+    <img class="kartinki" data-src="Ris12/124.png">
+    <img class="kartinki" data-src="Ris12/125.png">
+    <img class="kartinki" data-src="Ris12/126.png">
+    <img class="kartinki" data-src="Ris12/127.png">
+    <img class="kartinki" data-src="Ris12/128.png">
+    <img class="kartinki" data-src="Ris12/129.png">
+    <img class="kartinki" data-src="Ris12/130.png">
+    <img class="kartinki" data-src="Ris12/131.png">
+    <img class="kartinki" data-src="Ris12/132.png">
+</div>
+
+<div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
+<h1 class ="kategorija_podborok">5. Раскраски из мультфильмов «Фунтик», «Шарлота Земляничка». </h1>
+</div>
+
+
+<div class="nizniy_dla_kartinok">
+    <img class="kartinki" data-src="Ris12/133.png">
+    <img class="kartinki" data-src="Ris12/134.png">
+    <img class="kartinki" data-src="Ris12/135.png">
+    <img class="kartinki" data-src="Ris12/136.png">
+    <img class="kartinki" data-src="Ris12/137.png">
+    <img class="kartinki" data-src="Ris12/138.png">
+    <img class="kartinki" data-src="Ris12/139.png">
+    <img class="kartinki" data-src="Ris12/140.png">
+    <img class="kartinki" data-src="Ris12/141.png">
+    <img class="kartinki" data-src="Ris12/142.png">
+    <img class="kartinki" data-src="Ris12/143.png">
+    <img class="kartinki" data-src="Ris12/144.png">
+    <img class="kartinki" data-src="Ris12/145.png">
+    <img class="kartinki" data-src="Ris12/146.png">
+    <img class="kartinki" data-src="Ris12/147.png">
+    <img class="kartinki" data-src="Ris12/148.png">
+    <img class="kartinki" data-src="Ris12/149.png">
+    <img class="kartinki" data-src="Ris12/150.png">
+    <img class="kartinki" data-src="Ris12/151.png">
+    <img class="kartinki" data-src="Ris12/152.png">
+    <img class="kartinki" data-src="Ris12/153.png">
+    <img class="kartinki" data-src="Ris12/154.png">
+    <img class="kartinki" data-src="Ris12/155.png">
+    <img class="kartinki" data-src="Ris12/156.png">
+    <img class="kartinki" data-src="Ris12/157.png">
+    <img class="kartinki" data-src="Ris12/158.png">
+    <img class="kartinki" data-src="Ris12/159.png">
+    <img class="kartinki" data-src="Ris12/160.png">
+</div>
+
+<div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
+<h1 class ="kategorija_podborok">6. Раскраски из мультфильмов «Чиполлино», «Том и Анжела», «Спящая красавица»,<br> «Король Лев».</h1>
+</div>
+
+
+<div class="nizniy_dla_kartinok">
+    <img class="kartinki" data-src="Ris12/161.png">
+    <img class="kartinki" data-src="Ris12/162.png">
+    <img class="kartinki" data-src="Ris12/163.png">
+    <img class="kartinki" data-src="Ris12/164.png">
+    <img class="kartinki" data-src="Ris12/165.png">
+    <img class="kartinki" data-src="Ris12/166.png">
+    <img class="kartinki" data-src="Ris12/167.png">
+    <img class="kartinki" data-src="Ris12/168.png">
+    <img class="kartinki" data-src="Ris12/169.png">
+    <img class="kartinki" data-src="Ris12/170.png">
+    <img class="kartinki" data-src="Ris12/171.png">
+    <img class="kartinki" data-src="Ris12/172.png">
+    <img class="kartinki" data-src="Ris12/173.png">
+    <img class="kartinki" data-src="Ris12/174.png">
+    <img class="kartinki" data-src="Ris12/175.png">
+    <img class="kartinki" data-src="Ris12/176.png">
+    <img class="kartinki" data-src="Ris12/177.png">
+    <img class="kartinki" data-src="Ris12/178.png">
+    <img class="kartinki" data-src="Ris12/179.png">
+    <img class="kartinki" data-src="Ris12/180.png">
+    <img class="kartinki" data-src="Ris12/181.png">
+    <img class="kartinki" data-src="Ris12/182.png">
+    <img class="kartinki" data-src="Ris12/183.png">
+    <img class="kartinki" data-src="Ris12/184.png">
+    <img class="kartinki" data-src="Ris12/185.png">
+    <img class="kartinki" data-src="Ris12/186.png">
+    <img class="kartinki" data-src="Ris12/187.png">
+    <img class="kartinki" data-src="Ris12/188.png">
+</div>
+
+
+<div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
+<h1 class ="kategorija_podborok">7. Раскраски «Цветы»</h1>
+</div>
+
+
+<div class="nizniy_dla_kartinok">
+    <img class="kartinki" data-src="Ris12/189.png">
+    <img class="kartinki" data-src="Ris12/190.png">
+    <img class="kartinki" data-src="Ris12/191.png">
+    <img class="kartinki" data-src="Ris12/192.png">
+    <img class="kartinki" data-src="Ris12/193.png">
+    <img class="kartinki" data-src="Ris12/194.png">
+    <img class="kartinki" data-src="Ris12/195.png">
+    <img class="kartinki" data-src="Ris12/196.png">
+    <img class="kartinki" data-src="Ris12/197.png">
+    <img class="kartinki" data-src="Ris12/198.png">
+    <img class="kartinki" data-src="Ris12/199.png">
+    <img class="kartinki" data-src="Ris12/200.png">
+    <img class="kartinki" data-src="Ris12/201.png">
+    <img class="kartinki" data-src="Ris12/202.png">
+    <img class="kartinki" data-src="Ris12/203.png">
+    <img class="kartinki" data-src="Ris12/204.png">
+    <img class="kartinki" data-src="Ris12/205.png">
+    <img class="kartinki" data-src="Ris12/206.png">
+    <img class="kartinki" data-src="Ris12/207.png">
+    <img class="kartinki" data-src="Ris12/208.png">
+    <img class="kartinki" data-src="Ris12/209.png">
+    <img class="kartinki" data-src="Ris12/210.png">
+    <img class="kartinki" data-src="Ris12/211.png">
+    <img class="kartinki" data-src="Ris12/212.png">
+    <img class="kartinki" data-src="Ris12/213.png">
+    <img class="kartinki" data-src="Ris12/214.png">
+    <img class="kartinki" data-src="Ris12/215.png">
+    <img class="kartinki" data-src="Ris12/216.png">
+</div>
+
+<div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
+<h1 class ="kategorija_podborok">8. Раскраски «Насекомые»</h1>
+</div>
+
+
+<div class="nizniy_dla_kartinok">
+    <img class="kartinki" data-src="Ris12/217.png">
+    <img class="kartinki" data-src="Ris12/218.png">
+    <img class="kartinki" data-src="Ris12/219.png">
+    <img class="kartinki" data-src="Ris12/220.png">
+    <img class="kartinki" data-src="Ris12/221.png">
+    <img class="kartinki" data-src="Ris12/222.png">
+    <img class="kartinki" data-src="Ris12/223.png">
+    <img class="kartinki" data-src="Ris12/224.png">
+    <img class="kartinki" data-src="Ris12/225.png">
+    <img class="kartinki" data-src="Ris12/226.png">
+    <img class="kartinki" data-src="Ris12/227.png">
+    <img class="kartinki" data-src="Ris12/228.png">
+    <img class="kartinki" data-src="Ris12/229.png">
+    <img class="kartinki" data-src="Ris12/230.png">
+    <img class="kartinki" data-src="Ris12/231.png">
+    <img class="kartinki" data-src="Ris12/232.png">
+    <img class="kartinki" data-src="Ris12/233.png">
+    <img class="kartinki" data-src="Ris12/234.png">
+    <img class="kartinki" data-src="Ris12/235.png">
+    <img class="kartinki" data-src="Ris12/236.png">
+    <img class="kartinki" data-src="Ris12/237.png">
+    <img class="kartinki" data-src="Ris12/238.png">
+    <img class="kartinki" data-src="Ris12/239.png">
+    <img class="kartinki" data-src="Ris12/240.png">
+    <img class="kartinki" data-src="Ris12/241.png">
+    <img class="kartinki" data-src="Ris12/242.png">
+    <img class="kartinki" data-src="Ris12/243.png">
+    <img class="kartinki" data-src="Ris12/244.png">
+</div>
+
+
+<div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
+<h1 class ="kategorija_podborok">9. Раскраски «Рыбы»</h1>
+</div>
+
+
+<div class="nizniy_dla_kartinok">
+    <img class="kartinki" data-src="Ris12/245.png">
+    <img class="kartinki" data-src="Ris12/246.png">
+    <img class="kartinki" data-src="Ris12/247.png">
+    <img class="kartinki" data-src="Ris12/248.png">
+    <img class="kartinki" data-src="Ris12/249.png">
+    <img class="kartinki" data-src="Ris12/250.png">
+    <img class="kartinki" data-src="Ris12/251.png">
+    <img class="kartinki" data-src="Ris12/252.png">
+    <img class="kartinki" data-src="Ris12/253.png">
+    <img class="kartinki" data-src="Ris12/254.png">
+    <img class="kartinki" data-src="Ris12/255.png">
+    <img class="kartinki" data-src="Ris12/256.png">
+    <img class="kartinki" data-src="Ris12/257.png">
+    <img class="kartinki" data-src="Ris12/258.png">
+    <img class="kartinki" data-src="Ris12/259.png">
+    <img class="kartinki" data-src="Ris12/260.png">
+    <img class="kartinki" data-src="Ris12/261.png">
+    <img class="kartinki" data-src="Ris12/262.png">
+    <img class="kartinki" data-src="Ris12/263.png">
+    <img class="kartinki" data-src="Ris12/264.png">
+    <img class="kartinki" data-src="Ris12/265.png">
+    <img class="kartinki" data-src="Ris12/266.png">
+    <img class="kartinki" data-src="Ris12/267.png">
+    <img class="kartinki" data-src="Ris12/268.png">
+    <img class="kartinki" data-src="Ris12/269.png">
+    <img class="kartinki" data-src="Ris12/270.png">
+    <img class="kartinki" data-src="Ris12/271.png">
+    <img class="kartinki" data-src="Ris12/272.png">
+</div>
+
+
+<div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
+<h1 class ="kategorija_podborok">10. Раскраски «Животные»</h1>
+</div>
+
+
+<div class="nizniy_dla_kartinok">
+    <img class="kartinki" data-src="Ris12/273.png">
+    <img class="kartinki" data-src="Ris12/274.png">
+    <img class="kartinki" data-src="Ris12/275.png">
+    <img class="kartinki" data-src="Ris12/276.png">
+    <img class="kartinki" data-src="Ris12/277.png">
+    <img class="kartinki" data-src="Ris12/278.png">
+    <img class="kartinki" data-src="Ris12/279.png">
+    <img class="kartinki" data-src="Ris12/280.png">
+    <img class="kartinki" data-src="Ris12/281.png">
+    <img class="kartinki" data-src="Ris12/282.png">
+    <img class="kartinki" data-src="Ris12/283.png">
+    <img class="kartinki" data-src="Ris12/284.png">
+    <img class="kartinki" data-src="Ris12/285.png">
+    <img class="kartinki" data-src="Ris12/286.png">
+    <img class="kartinki" data-src="Ris12/287.png">
+    <img class="kartinki" data-src="Ris12/288.png">
+    <img class="kartinki" data-src="Ris12/289.png">
+    <img class="kartinki" data-src="Ris12/290.png">
+    <img class="kartinki" data-src="Ris12/291.png">
+    <img class="kartinki" data-src="Ris12/292.png">
+    <img class="kartinki" data-src="Ris12/293.png">
+    <img class="kartinki" data-src="Ris12/294.png">
+    <img class="kartinki" data-src="Ris12/295.png">
+    <img class="kartinki" data-src="Ris12/296.png">
+    <img class="kartinki" data-src="Ris12/297.png">
+    <img class="kartinki" data-src="Ris12/298.png">
+    <img class="kartinki" data-src="Ris12/299.png">
+    <img class="kartinki" data-src="Ris12/300.png">
+</div>
+
+
+<div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
+<h1 class ="kategorija_podborok">11. Раскраски «Девочки из мультфильмов»</h1>
+</div>
+
+
+<div class="nizniy_dla_kartinok">
+    <img class="kartinki" data-src="Ris12/301.png">
+    <img class="kartinki" data-src="Ris12/302.png">
+    <img class="kartinki" data-src="Ris12/303.png">
+    <img class="kartinki" data-src="Ris12/304.png">
+    <img class="kartinki" data-src="Ris12/305.png">
+    <img class="kartinki" data-src="Ris12/306.png">
+    <img class="kartinki" data-src="Ris12/307.png">
+    <img class="kartinki" data-src="Ris12/308.png">
+    <img class="kartinki" data-src="Ris12/309.png">
+    <img class="kartinki" data-src="Ris12/310.png">
+    <img class="kartinki" data-src="Ris12/311.png">
+    <img class="kartinki" data-src="Ris12/312.png">
+    <img class="kartinki" data-src="Ris12/313.png">
+    <img class="kartinki" data-src="Ris12/314.png">
+    <img class="kartinki" data-src="Ris12/315.png">
+    <img class="kartinki" data-src="Ris12/316.png">
+    <img class="kartinki" data-src="Ris12/317.png">
+    <img class="kartinki" data-src="Ris12/318.png">
+    <img class="kartinki" data-src="Ris12/319.png">
+    <img class="kartinki" data-src="Ris12/320.png">
+    <img class="kartinki" data-src="Ris12/321.png">
+    <img class="kartinki" data-src="Ris12/322.png">
+    <img class="kartinki" data-src="Ris12/323.png">
+    <img class="kartinki" data-src="Ris12/324.png">
+    <img class="kartinki" data-src="Ris12/325.png">
+    <img class="kartinki" data-src="Ris12/326.png">
+    <img class="kartinki" data-src="Ris12/327.png">
+    <img class="kartinki" data-src="Ris12/328.png">
+</div>
+
+<div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
+<h1 class ="kategorija_podborok">12. Раскраски «Рисунки и узоры по клеточкам»</h1>
+</div>
+
+
+<div class="nizniy_dla_kartinok">
+    <img class="kartinki" data-src="Ris12/329.png">
+    <img class="kartinki" data-src="Ris12/330.png">
+    <img class="kartinki" data-src="Ris12/331.png">
+    <img class="kartinki" data-src="Ris12/332.png">
+    <img class="kartinki" data-src="Ris12/333.png">
+    <img class="kartinki" data-src="Ris12/334.png">
+    <img class="kartinki" data-src="Ris12/335.png">
+    <img class="kartinki" data-src="Ris12/336.png">
+    <img class="kartinki" data-src="Ris12/337.png">
+    <img class="kartinki" data-src="Ris12/338.png">
+    <img class="kartinki" data-src="Ris12/339.png">
+    <img class="kartinki" data-src="Ris12/340.png">
+    <img class="kartinki" data-src="Ris12/341.png">
+    <img class="kartinki" data-src="Ris12/342.png">
+</div>
+
+
+<div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
+<h1 class ="kategorija_podborok">13. Раскраски «Куклы Лол»</h1>
+</div>
+
+
+<div class="nizniy_dla_kartinok">
+    <img class="kartinki" data-src="Ris12/351.png">
+    <img class="kartinki" data-src="Ris12/352.png">
+    <img class="kartinki" data-src="Ris12/353.png">
+    <img class="kartinki" data-src="Ris12/354.png">
+    <img class="kartinki" data-src="Ris12/355.png">
+    <img class="kartinki" data-src="Ris12/356.png">
+    <img class="kartinki" data-src="Ris12/357.png">
+    <img class="kartinki" data-src="Ris12/358.png">
+    <img class="kartinki" data-src="Ris12/359.png">
+    <img class="kartinki" data-src="Ris12/360.png">
+    <img class="kartinki" data-src="Ris12/361.png">
+    <img class="kartinki" data-src="Ris12/362.png">
+    <img class="kartinki" data-src="Ris12/363.png">
+    <img class="kartinki" data-src="Ris12/364.png">
+    <img class="kartinki" data-src="Ris12/365.png">
+    <img class="kartinki" data-src="Ris12/366.png">
+    <img class="kartinki" data-src="Ris12/367.png">
+    <img class="kartinki" data-src="Ris12/368.png">
+    <img class="kartinki" data-src="Ris12/369.png">
+    <img class="kartinki" data-src="Ris12/370.png">
+    <img class="kartinki" data-src="Ris12/371.png">
+    <img class="kartinki" data-src="Ris12/372.png">
+    <img class="kartinki" data-src="Ris12/373.png">
+    <img class="kartinki" data-src="Ris12/374.png">
+    <img class="kartinki" data-src="Ris12/375.png">
+    <img class="kartinki" data-src="Ris12/376.png">
+    <img class="kartinki" data-src="Ris12/377.png">
+    <img class="kartinki" data-src="Ris12/378.png">
+</div>
+
+<div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
+<h1 class ="kategorija_podborok">14. Раскраски «Природа»</h1>
+</div>
+
+
+<div class="nizniy_dla_kartinok">
+    <img class="kartinki" data-src="Ris12/410.png">
+    <img class="kartinki" data-src="Ris12/411.png">
+    <img class="kartinki" data-src="Ris12/412.png">
+    <img class="kartinki" data-src="Ris12/413.png">
+    <img class="kartinki" data-src="Ris12/414.png">
+    <img class="kartinki" data-src="Ris12/415.png">
+    <img class="kartinki" data-src="Ris12/416.png">
+    <img class="kartinki" data-src="Ris12/417.png">
+    <img class="kartinki" data-src="Ris12/418.png">
+    <img class="kartinki" data-src="Ris12/419.png">
+    <img class="kartinki" data-src="Ris12/420.png">
+    <img class="kartinki" data-src="Ris12/421.png">
+    <img class="kartinki" data-src="Ris12/422.png">
+    <img class="kartinki" data-src="Ris12/423.png">
+    <img class="kartinki" data-src="Ris12/424.png">
+    <img class="kartinki" data-src="Ris12/425.png">
+    <img class="kartinki" data-src="Ris12/426.png">
+    <img class="kartinki" data-src="Ris12/427.png">
+    <img class="kartinki" data-src="Ris12/428.png">
+    <img class="kartinki" data-src="Ris12/429.png">
+    <img class="kartinki" data-src="Ris12/430.png">
+    <img class="kartinki" data-src="Ris12/431.png">
+    <img class="kartinki" data-src="Ris12/432.png">
+    <img class="kartinki" data-src="Ris12/433.png">
+    <img class="kartinki" data-src="Ris12/434.png">
+    <img class="kartinki" data-src="Ris12/435.png">
+    <img class="kartinki" data-src="Ris12/436.png">
+    <img class="kartinki" data-src="Ris12/437.png">
+</div>
+
+
+<div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
+<h1 class ="kategorija_podborok">15. Раскраски для мальчиков</h1>
+</div>
+
+
+<div class="nizniy_dla_kartinok">
+    <img class="kartinki" data-src="Ris12/380.png">
+    <img class="kartinki" data-src="Ris12/381.png">
+    <img class="kartinki" data-src="Ris12/382.png">
+    <img class="kartinki" data-src="Ris12/383.png">
+    <img class="kartinki" data-src="Ris12/384.png">
+    <img class="kartinki" data-src="Ris12/385.png">
+    <img class="kartinki" data-src="Ris12/386.png">
+    <img class="kartinki" data-src="Ris12/387.png">
+    <img class="kartinki" data-src="Ris12/388.png">
+    <img class="kartinki" data-src="Ris12/389.png">
+    <img class="kartinki" data-src="Ris12/390.png">
+    <img class="kartinki" data-src="Ris12/391.png">
+    <img class="kartinki" data-src="Ris12/392.png">
+    <img class="kartinki" data-src="Ris12/393.png">
+    <img class="kartinki" data-src="Ris12/394.png">
+    <img class="kartinki" data-src="Ris12/395.png">
+    <img class="kartinki" data-src="Ris12/396.png">
+    <img class="kartinki" data-src="Ris12/397.png">
+    <img class="kartinki" data-src="Ris12/398.png">
+    <img class="kartinki" data-src="Ris12/399.png">
+    <img class="kartinki" data-src="Ris12/400.png">
+    <img class="kartinki" data-src="Ris12/401.png">
+    <img class="kartinki" data-src="Ris12/402.png">
+    <img class="kartinki" data-src="Ris12/403.png">
+    <img class="kartinki" data-src="Ris12/404.png">
+    <img class="kartinki" data-src="Ris12/405.png">
+    <img class="kartinki" data-src="Ris12/406.png">
+    <img class="kartinki" data-src="Ris12/407.png">
+</div>
+
+
+<div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
+<h1 class ="kategorija_podborok">16. Раскраски по номерам</h1>
+</div>
+
+
+<div class="nizniy_dla_kartinok">
+    <img class="kartinki" data-src="Ris12/450.png">
+    <img class="kartinki" data-src="Ris12/451.png">
+    <img class="kartinki" data-src="Ris12/452.png">
+    <img class="kartinki" data-src="Ris12/453.png">
+    <img class="kartinki" data-src="Ris12/454.png">
+    <img class="kartinki" data-src="Ris12/455.png">
+    <img class="kartinki" data-src="Ris12/456.png">
+    <img class="kartinki" data-src="Ris12/457.png">
+    <img class="kartinki" data-src="Ris12/458.png">
+    <img class="kartinki" data-src="Ris12/459.png">
+    <img class="kartinki" data-src="Ris12/460.png">
+    <img class="kartinki" data-src="Ris12/461.png">
+    <img class="kartinki" data-src="Ris12/462.png">
+    <img class="kartinki" data-src="Ris12/463.png">
+    <img class="kartinki" data-src="Ris12/464.png">
+    <img class="kartinki" data-src="Ris12/465.png">
+    <img class="kartinki" data-src="Ris12/466.png">
+    <img class="kartinki" data-src="Ris12/467.png">
+    <img class="kartinki" data-src="Ris12/468.png">
+    <img class="kartinki" data-src="Ris12/469.png">
+    <img class="kartinki" data-src="Ris12/470.png">
+    <img class="kartinki" data-src="Ris12/471.png">
+    <img class="kartinki" data-src="Ris12/472.png">
+    <img class="kartinki" data-src="Ris12/473.png">
+    <img class="kartinki" data-src="Ris12/474.png">
+    <img class="kartinki" data-src="Ris12/475.png">
+    <img class="kartinki" data-src="Ris12/476.png">
+    <img class="kartinki" data-src="Ris12/477.png">
+</div>
+
+
+
+<h3 class="ssilka">Желающих начать изучение инженерных программ для черчения и объёмного моделирования BriksCAD, T-FlexCAD,
+ Inventor, SolidWorks приглашаю на сайт <a href="https://perviyptr.github.io/uchebnik/">perviyptr.github.io/uchebnik/</a></h3>
+<h3 class="ssilka">Если хотите попробовать сверстать сайт предлагаю воспользоваться программой для вёрстки<br>
+<a href="https://perviyptr.github.io/verstka/">perviyptr.github.io/verstka/</a></h3>
+<h3 class="ssilka">А этот сайт для тех, кто хочет спланировать здоровый рацион питания<br>
+<a href="https://perviyptr.github.io/Site_Zdorovoe_Pitanie/">perviyptr.github.io/Site_Zdorovoe_Pitanie/</a></h3>
+<h3 class="ssilka">С помощью этой простой програмки можно проверить свою удачу на выигрыш в лоторею, не потратив при этом ни копейки.<br>
+<a href="https://perviyptr.github.io/uchebnik/lotorea_analiz.html">perviyptr.github.io/uchebnik/lotorea_analiz/</a></h3>
+<h3 class="ssilka">Для тех, кто верит в нумерологию или просто из любопытства.Рассчитать число своего рождения с расшифровкой.<br>
+<a href="https://perviyptr.github.io/uchebnik/numerologia.html">perviyptr.github.io/uchebnik/numerologia/</a></h3>
+<h3 id="blagodarnost">Использованы картинки с сайтов <a href="http://moi-raskraski.ru/"> moi-raskraski.ru</a> и <a href="http://alegri.ru/">alegri.ru</a></h3>
+
+
+
+<script type="text/javascript">
+
+var mouseDown = false;
+var currentMode = 'fill';
+const canvas = document.getElementById('canvas');
+const container = document.getElementById('canvas-container');
+const overlay = document.getElementById('canvas-overlay');
+const дляВыключателяНомеров = document.getElementById('дляВыключателяНомеров');
+const выключательДляНомеров = document.getElementById('выключательДляНомеров');
+var ctx = canvas.getContext('2d');
+ctx.imageSmoothingEnabled = false;
+ctx.lineJoin = 'round';
+ctx.lineWidth = 3;
+var cvet = document.getElementsByClassName('cvet');
+var colors = [[0,0,0], [192,192,192], [255,0,0], [255,128,0], [255,255,0], [0,255,0], [128,255,255], [0,0,255], [255,128,255], [255,255,255],   [128,0,0], [128,64,0], [255,0,128], [128,128,0], [0,128,0], [0,255,128], [64,128,128], [0,0,128], [128,64,128], [128,128,128]];
+var massiv_cvetov = colors.map(color => rgbToHex.apply(null, color));
+var massiv_cvetov2 = colors.map(color => 'rgb(' + color.join(',') + ')');
+var cvet_zalivki = massiv_cvetov[0];
+let currentColor = massiv_cvetov2[0];
+
+function rgbToHex(r, g, b) {
+  return (0xFF000000 | (b << 16) | (g << 8) | r) >>> 0;
+}
+
+function hexToRgb(hex) {
+  return [hex & 0xFF, (hex >> 8) & 0xFF, (hex >> 16) & 0xFF];
+}
+
+for (let i = 0; i < cvet.length; i++) {
+  cvet[i].addEventListener('click', function VibratCvet(event) {
+    event.preventDefault();
+    highlightCurrent(cvet[i]);
+
+    cvet_zalivki = massiv_cvetov[i];
+    currentColor =  massiv_cvetov2[i];
+    colorInput.value = '#' + CP.RGB2HEX(colors[i]);
+    выборщикЦветов.fire("change", [CP.RGB2HEX(colors[i])]);
+    выборщикЦветов.set('#' + CP.RGB2HEX(colors[i])).enter();
+
+    if (currentMode !== 'lastik') {
+      ctx.strokeStyle = currentColor;
+    }
+  });
+}
+
+function getCoords(event) {
+  return {
+    x: Math.round(event.offsetX / canvas.clientWidth * (outlineImage.width || canvas.clientWidth)),
+    y: Math.round(event.offsetY / canvas.clientHeight * (outlineImage.height || canvas.clientHeight))
+  };
+}
+
+canvas.addEventListener('mousedown', function (event) {
+  if (event.which === 3) {
+    return;
+  }
+
+  event.preventDefault();
+
+  const {x, y} = getCoords(event);
+
+  if (event.which === 2 || event.which === 1 && currentMode === 'pipetka') {
+    // Пипетка
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const imageArray = new Uint32Array(imageData.data.buffer);
+    const width = imageData.width;
+    const height = imageData.height;
+
+    if (x < 0 || x >= width)
+      return;
+    if (y < 0 || y >= height)
+      return;
+
+    const point = y * width + x;
+    const color = hexToRgb(imageArray[point]);
+
+    cvet_zalivki = color;
+    currentColor =  '#' + CP.RGB2HEX(color);
+    colorInput.value = '#' + CP.RGB2HEX(color);
+    выборщикЦветов.fire("change", [CP.RGB2HEX(color)]);
+    выборщикЦветов.set('#' + CP.RGB2HEX(color)).enter();
+
+    if (currentMode !== 'lastik') {
+      ctx.strokeStyle = currentColor;
+    }
+
+    if (currentMode === 'pipetka') {
+      currentMode = 'fill';
+      highlightCurrent(document.querySelector('.panel-button[data-mode="fill"]'));
+    }
+  } else if (event.which === 1) {
+    if (currentMode === 'paint' || currentMode === 'lastik') {
+      mouseDown = true;
+      ctx.beginPath();
+    }
+    else {
+      floodFill(x, y, cvet_zalivki);
+    }
+
+  }
+});
+
+
+canvas.addEventListener('mousemove', function (event) {
+  if (!mouseDown) {
+    return;
+  }
+
+  const {x, y} = getCoords(event);
+  ctx.lineTo(x, y);
+  ctx.stroke();
+});
+
+canvas.addEventListener('mouseup', function (event) {
+  mouseDown = false;
+});
+
+  var ochistit = document.querySelector('#ochistit a');
+  ochistit.addEventListener("click", Oscistit_holst);
+  function Oscistit_holst(event){
+    event.preventDefault();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
+
+for (const link of document.querySelectorAll('.paneli2 .panel-button')) {
+  link.addEventListener('click', function (event) {
+    event.preventDefault();
+
+    var mode = link.dataset.mode;
+    highlightCurrent(link);
+
+    switch (mode) {
+      case "fill":
+        currentMode = 'fill';
+        break;
+      case "paint":
+        currentMode = 'paint';
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = currentColor;
+        break;
+      case "pipetka":
+        currentMode = 'pipetka';
+        break;
+      case "lastik":
+        currentMode = 'lastik';
+        ctx.lineWidth = 30;
+        ctx.strokeStyle = 'white';
+        break;
+    }
+  });
+}
+
+function highlightCurrent(element) {
+  for (const button of element.closest('.panel').getElementsByClassName('panel-button-current')) {
+    button.classList.remove('panel-button-current');
+  }
+
+  element.classList.add('panel-button-current');
+}
+
+
+const outlineImage = new Image();
+
+outlineImage.onload = function () {
+  container.style.width = outlineImage.width + 'px';
+  container.style.height = outlineImage.height + 'px';
+  overlay.width = outlineImage.width;
+  overlay.height = outlineImage.height;
+  canvas.width = outlineImage.width;
+  canvas.height = outlineImage.height;
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.drawImage(outlineImage, 0, 0, canvas.width, canvas.height);
+  ctx.strokeStyle = currentColor;
+
+  try {
+    outlineLayerData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  } catch (ex) {
+    window.alert("Приложение не может выполняться локально. Запустите на сервере.");
+    return;
+  }
+};
+
+overlay.onload = function () {
+  overlay.style.removeProperty('display');
+  дляВыключателяНомеров.classList.remove('hidden');
+  выключательДляНомеров.checked = true;
+};
+
+
+var kartinki = document.getElementsByClassName('kartinki');
+
+for(let i = 0; i < kartinki.length; ++i){
+  kartinki[i].addEventListener('click', function Vibor_kartinki(){
+    outlineImage.src = kartinki[i].src;
+    overlay.classList.remove('hidden');
+    overlay.src = kartinki[i].src.replace(/(\.png)/i, '_overlay$1');
+    overlay.style.display = 'none';
+    дляВыключателяНомеров.classList.add('hidden');
+  });
+   kartinki[i].addEventListener('click', up);
+}
+
+var t; //прокрутка вверх по клику на картинке
+function up() {
+  var top = Math.max(document.body.scrollTop,document.documentElement.scrollTop);
+  if(top > 500) {
+    window.scrollBy(0,-100);
+    t = setTimeout('up()',20);
+  } else clearTimeout(t);
+  return false;
+}
+
+
+function floodFill(x, y, color){
+  const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  const imageArray = new Uint32Array(imageData.data.buffer);
+  const width = imageData.width;
+  const height = imageData.height;
+  const stack = [[x, y]];
+  const sourceColor = imageArray[y * width + x];
+
+  if (color === 0xFF000000) {
+    color = 0xFF010101;
+  }
+
+  if (sourceColor === 0xFF000000) {
+    // Черный цвет
+    return;
+  }
+
+  if (sourceColor === color) {
+    // Иначе будет заливать бесконечно
+    return;
+  }
+
+  while (stack.length > 0) {
+   const pixel = stack.pop();
+    if (pixel[0] < 0 || pixel[0] >= width)
+      continue;
+    if (pixel[1] < 0 || pixel[1] >= height)
+      continue;
+
+    const point = pixel[1] * width + pixel[0];
+
+    // Если не совпадает с исходным цветом
+    if (imageArray[point] !== sourceColor) {
+      continue;
+    }
+
+    // Закрашиваем
+    imageArray[point] = color;
+
+    // Ставим соседей в стек на проверку
+    stack.push([
+      pixel[0] - 1,
+      pixel[1]
+    ]);
+    stack.push([
+      pixel[0] + 1,
+      pixel[1]
+    ]);
+    stack.push([
+      pixel[0],
+      pixel[1] - 1
+    ]);
+    stack.push([
+      pixel[0],
+      pixel[1] + 1
+    ]);
+  }
+  ctx.putImageData(imageData, 0, 0);
+}
+
+var nizniy_dla_kartinok = document.getElementsByClassName('nizniy_dla_kartinok');
+var kategorija_podborok = document.getElementsByClassName('kategorija_podborok');
+for(let i = 0; i < kategorija_podborok.length; i++){
+  kategorija_podborok[i].addEventListener('click', function () {
+    nizniy_dla_kartinok[i].classList.toggle('flex');
+
+    [].forEach.call(nizniy_dla_kartinok[i].querySelectorAll('img[data-src]'), function (img) {
+      img.setAttribute('src', img.getAttribute('data-src'));
+
+      img.onload = function () {
+        img.removeAttribute('data-src');
+      };
+    });
+
+  });
+}
+
+var dla_kategoriy_podborok = document.getElementsByClassName('dla_kategoriy_podborok');
+for(let i = 0; i < dla_kategoriy_podborok.length; i++){
+  if (i % 2 == 0) {
+    dla_kategoriy_podborok[i].style.backgroundColor = 'rgb(247, 146, 237)';
+  }else{
+    dla_kategoriy_podborok[i].style.backgroundColor = 'rgb(245, 184, 147)';
+  }
+}
+
+дляВыключателяНомеров.addEventListener('click', ПереключитьВидимость);
+
+function ПереключитьВидимость(){
+  overlay.classList.toggle('hidden', !выключательДляНомеров.checked);
+}
+
+</script>
+
+</body>
+
+</html>
