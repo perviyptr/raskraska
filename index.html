@@ -321,13 +321,18 @@ i{
   position: absolute;
   pointer-events: none;
   z-index: 11;
+  max-width: 1000px;
+  height: auto;
 }
-#дляВыключателяНомеров{
+#дляВыключателяНомеров, #дляВыключателяЛиний{
   width: 100%;
   height: 20px;
-  margin-top: 20px;
+  margin-top: 10px;
 }
-#дляВыключателяНомеров:hover{
+#дляВыключателяЛиний{
+  margin-bottom: 10px;
+}
+#дляВыключателяНомеров:hover, #дляВыключателяЛиний:hover{
   cursor: pointer;
 }
 
@@ -367,6 +372,8 @@ i{
       <i>Сохраниь картинку как</i>...</li>
     <li>Нужные цвета выбираюйте на палитре левой кнопкой мыши.</li>
     <li>Для выбора цвета по образцу используйте пипетку (или щелчок по выбранному цвету на изображении с нажатой средней кнопкой мыши).</li>
+    <li>Можно закрасить с помощью кнопки линии разметки <br>(это необходимо в основном для сложных раскрасок по номерам).<br>
+    Закрашенные линии разметки восстановить нельзя.</li>
     <li>Для увеличения изображения на холсте пользуйтесь колёсиком мыши с нажатой клавишей "Ctrl".</li>
     <li>Ниже находится много тематических подборок картинок для раскраски.
     Подборки раскрываютя и свёртываются щелчком мыши по названию подборки.</li>
@@ -412,6 +419,10 @@ i{
     <label id="дляВыключателяНомеров" class="hidden">
       <input type="checkbox" id="выключательДляНомеров" checked autocomplete="off">
       Показать номера
+    </label>
+
+    <label id="дляВыключателяЛиний">
+      <input type="button" id="выключательДляЛиний" value="Закрасить линии разметки">
     </label>
 
   </div>
@@ -1049,6 +1060,36 @@ i{
 </div>
 
 
+<div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
+<h1 class ="kategorija_podborok">18. Сложные раскраски по номерам</h1>
+</div>
+
+
+<div class="nizniy_dla_kartinok">
+    <img class="kartinki" data-src="Ris12/500.png">
+    <img class="kartinki" data-src="Ris12/501.png">
+    <img class="kartinki" data-src="Ris12/502.png">
+    <img class="kartinki" data-src="Ris12/503.png">
+    <img class="kartinki" data-src="Ris12/504.png">
+    <img class="kartinki" data-src="Ris12/505.png">
+    <img class="kartinki" data-src="Ris12/506.png">
+    <img class="kartinki" data-src="Ris12/507.png">
+    <img class="kartinki" data-src="Ris12/508.png">
+    <img class="kartinki" data-src="Ris12/509.png">
+    <img class="kartinki" data-src="Ris12/510.png">
+    <img class="kartinki" data-src="Ris12/511.png">
+    <img class="kartinki" data-src="Ris12/512.png">
+    <img class="kartinki" data-src="Ris12/513.png">
+    <img class="kartinki" data-src="Ris12/514.png">
+    <img class="kartinki" data-src="Ris12/515.png">
+    <img class="kartinki" data-src="Ris12/516.png">
+    <img class="kartinki" data-src="Ris12/517.png">
+    <img class="kartinki" data-src="Ris12/518.png">
+    <img class="kartinki" data-src="Ris12/519.png">
+    <img class="kartinki" data-src="Ris12/520.png">
+</div>
+
+
 
 
 
@@ -1077,7 +1118,7 @@ const выборщикЦветов = new CP(colorInput, false, document.querySel
     colorInput.style.backgroundColor = '#' + color;
 
     currentColor = '#' + color;
-    cvet_zalivki = rgbToHex.apply(null, CP.HEX2RGB(color));
+    cvet_zalivki = rgbToInt(CP.HEX2RGB(color));
 
     if (currentMode !== 'lastik') {
       ctx.strokeStyle = currentColor;
@@ -1097,23 +1138,22 @@ const canvas = document.getElementById('canvas');
 const container = document.getElementById('canvas-container');
 const overlay = document.getElementById('canvas-overlay');
 const дляВыключателяНомеров = document.getElementById('дляВыключателяНомеров');
+const дляВыключателяЛиний = document.getElementById('дляВыключателяЛиний');
 const выключательДляНомеров = document.getElementById('выключательДляНомеров');
+const выключательДляЛиний = document.getElementById('выключательДляЛиний');
 var ctx = canvas.getContext('2d');
 ctx.imageSmoothingEnabled = false;
 ctx.lineJoin = 'round';
 ctx.lineWidth = 3;
 var cvet = document.getElementsByClassName('cvet');
 var colors = [[0,0,0], [192,192,192], [255,0,0], [255,128,0], [255,255,0], [0,255,0], [128,255,255], [0,0,255], [255,128,255], [255,255,255],   [128,0,0], [128,64,0], [255,0,128], [128,128,0], [0,128,0], [0,255,128], [64,128,128], [0,0,128], [128,64,128], [128,128,128]];
-var massiv_cvetov = colors.map(color => rgbToHex.apply(null, color));
-var massiv_cvetov2 = colors.map(color => 'rgb(' + color.join(',') + ')');
-var cvet_zalivki = massiv_cvetov[0];
-let currentColor = massiv_cvetov2[0];
+setColorInt(rgbToInt(colors[0]));
 
-function rgbToHex(r, g, b) {
+function rgbToInt([r, g, b]) {
   return (0xFF000000 | (b << 16) | (g << 8) | r) >>> 0;
 }
 
-function hexToRgb(hex) {
+function intToRgb(hex) {
   return [hex & 0xFF, (hex >> 8) & 0xFF, (hex >> 16) & 0xFF];
 }
 
@@ -1121,16 +1161,7 @@ for (let i = 0; i < cvet.length; i++) {
   cvet[i].addEventListener('click', function VibratCvet(event) {
     event.preventDefault();
     highlightCurrent(cvet[i]);
-
-    cvet_zalivki = massiv_cvetov[i];
-    currentColor =  massiv_cvetov2[i];
-    colorInput.value = '#' + CP.RGB2HEX(colors[i]);
-    выборщикЦветов.fire("change", [CP.RGB2HEX(colors[i])]);
-    выборщикЦветов.set('#' + CP.RGB2HEX(colors[i])).enter();
-
-    if (currentMode !== 'lastik') {
-      ctx.strokeStyle = currentColor;
-    }
+    setColorInt(rgbToInt(colors[i]));
   });
 }
 
@@ -1139,6 +1170,19 @@ function getCoords(event) {
     x: Math.round(event.offsetX / canvas.clientWidth * (outlineImage.width || canvas.clientWidth)),
     y: Math.round(event.offsetY / canvas.clientHeight * (outlineImage.height || canvas.clientHeight))
   };
+}
+
+function setColorInt(color) {
+    cvet_zalivki = color;
+    const rgb = intToRgb(color);
+    currentColor =  '#' + CP.RGB2HEX(rgb);
+    colorInput.value = '#' + CP.RGB2HEX(rgb);
+    выборщикЦветов.fire("change", [CP.RGB2HEX(rgb)]);
+    выборщикЦветов.set('#' + CP.RGB2HEX(rgb)).enter();
+
+    if (currentMode !== 'lastik') {
+      ctx.strokeStyle = currentColor;
+    }
 }
 
 canvas.addEventListener('mousedown', function (event) {
@@ -1163,17 +1207,7 @@ canvas.addEventListener('mousedown', function (event) {
       return;
 
     const point = y * width + x;
-    const color = hexToRgb(imageArray[point]);
-
-    cvet_zalivki = color;
-    currentColor =  '#' + CP.RGB2HEX(color);
-    colorInput.value = '#' + CP.RGB2HEX(color);
-    выборщикЦветов.fire("change", [CP.RGB2HEX(color)]);
-    выборщикЦветов.set('#' + CP.RGB2HEX(color)).enter();
-
-    if (currentMode !== 'lastik') {
-      ctx.strokeStyle = currentColor;
-    }
+    setColorInt(imageArray[point]);
 
     if (currentMode === 'pipetka') {
       currentMode = 'fill';
@@ -1325,6 +1359,7 @@ function floodFill(x, y, color){
 
   if (originalColor !== 0xFFFFFFFF) {
     // Не белый изначально
+    setColorInt(originalColor);
     return;
   }
 
@@ -1396,6 +1431,55 @@ for(let i = 0; i < dla_kategoriy_podborok.length; i++){
 
 function ПереключитьВидимость(){
   overlay.classList.toggle('hidden', !выключательДляНомеров.checked);
+}
+
+
+дляВыключателяЛиний.addEventListener('click', fillLines);
+function fillLines() {
+  const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  const imageArray = new Uint32Array(imageData.data.buffer);
+  const width = imageData.width;
+  const height = imageData.height;
+
+  for (let y = 0; y < height; y++) {
+    for (let x = 1; x < width; x++) {
+      let point = y * width + x;
+
+      if (imageArray[point] != 0xFF000000) {
+        continue
+      }
+
+      const color = imageArray[point - 1];
+      // const originalX = x;
+
+      // while (imageArray[point] === 0xFF000000 && x < width) {
+      //   x++;
+      //   point++;
+      // }
+
+      // if (x - originalX > 8) {
+      //   continue;
+      // }
+
+      // if (imageArray[point] === color) {
+      //   continue;
+      // }
+
+      // x = originalX;
+      // point = y * width + x;
+
+      while (imageArray[point] === 0xFF000000 && x < width) {
+        if (color !== 0xFFFFFFFF) {
+          imageArray[point] = color;
+        }
+
+        x++;
+        point++;
+      }
+    }
+  }
+
+  ctx.putImageData(imageData, 0, 0);
 }
 
 </script>
