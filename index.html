@@ -7,7 +7,7 @@
 
   <title>Раскраска картинок онлайн</title>
 
-  <meta name="description" content="Раскраска картинок по номерам, раскраска картинок по цифрам, раскраска для детей и взрослых">
+  <meta name="description" content="Раскраска картинок по номерам, раскраска картинок по цифрам, раскраска для детей и взрослых, нарисовать по клеточкам, дорисовать картинку, раскраски из мультфильмов">
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-117113579-2"></script>
@@ -66,7 +66,7 @@ body{
   position: relative;
   width: 550px;
   height: 550px;
-  max-width: 1000px;
+  max-width: 1176px;
 }
 
 .canvas{
@@ -75,7 +75,7 @@ body{
   cursor: pointer;
   background-image: url('Ris12/Фон3.jpg');
   z-index: 10;
-  max-width: 1000px;
+  max-width: 1176px;
   position: absolute;
 }
 
@@ -321,7 +321,7 @@ i{
   position: absolute;
   pointer-events: none;
   z-index: 11;
-  max-width: 1000px;
+  max-width: 1176px;
   height: auto;
 }
 #дляВыключателяНомеров, #дляВыключателяЛиний{
@@ -335,7 +335,10 @@ i{
 #дляВыключателяНомеров:hover, #дляВыключателяЛиний:hover{
   cursor: pointer;
 }
-
+.kartinki-grid {
+  image-rendering: crisp-edges;
+  image-rendering: -moz-crisp-edges;
+}
   </style>
 </head>
 
@@ -366,14 +369,16 @@ i{
   <h1 id="zagolovok">РАСКРАСКА КАРТИНОК</h1>
   <ul id="nadpis_pod_zagolovkom">
     <li>Выбирайте любую картинку на фоне страницы левой кнопкой мыши и раскрашивайте.</li>
-    <li>Можно нарисовать свой рисунок или добавить своё изображение<br> к вставленному.<br>
-    Для этого включите режим <i>Рисование линий</i>.</li>
+    <li>Можно раскрашивать каждую область отдельно по клику мыши или группу областей одновременно, проводя по ним курсором с нажатой левой кнопкой мыши.</li>
+    <li>Для того, чтобы нарисовать свой рисунок или добавить своё изображение к вставленному включите режим <i>Рисование линий</i>.</li>
     <li>Для сохранения картинки щёлкните правой кнопкой мыши на холсте и выберите
       <i>Сохраниь картинку как</i>...</li>
     <li>Нужные цвета выбираюйте на палитре левой кнопкой мыши.</li>
-    <li>Для выбора цвета по образцу используйте пипетку (или щелчок по выбранному цвету на изображении с нажатой средней кнопкой мыши).</li>
-    <li>Можно закрасить с помощью кнопки линии разметки <br>(это необходимо в основном для сложных раскрасок по номерам).<br>
+    <li>Для выбора цвета по образцу используйте пипетку (или щелчок по выбранному цвету на изображении с нажатой средней кнопкой мыши).<br>
+    Цвет с образца можно взять, кроме того, левой кнопкой мыши.</li>
+    <li>Можно закрасить с помощью кнопки <i>Закрасить линии разметки</i> лишние линии (это необходимо в основном для сложных раскрасок по номерам).<br>
     Закрашенные линии разметки восстановить нельзя.</li>
+    <li>Отменить одно последнее действие можно комбинацией клавиш Ctrl + Z.</li>
     <li>Для увеличения изображения на холсте пользуйтесь колёсиком мыши с нажатой клавишей "Ctrl".</li>
     <li>Ниже находится много тематических подборок картинок для раскраски.
     Подборки раскрываютя и свёртываются щелчком мыши по названию подборки.</li>
@@ -443,16 +448,15 @@ i{
 
 <div class="dla_risunkov">
     <img class="kartinki" src="Ris12/494.png">
-    <img class="kartinki" src="Ris12/12.png">
+    <img class="kartinki" src="Ris12/463.png">
     <img class="kartinki" src="Ris12/13.png">
     <img class="kartinki" src="Ris12/14.png">
     <img class="kartinki" src="Ris12/15.png">
+    <img class="kartinki kartinki-grid" src="Ris12/657_sectiongrid.png">
+    <img class="kartinki kartinki-grid" src="Ris12/627_grid.png">
     <img class="kartinki" src="Ris12/16.png">
     <img class="kartinki" src="Ris12/17.png">
-    <img class="kartinki" src="Ris12/463.png">
-    <img class="kartinki" src="Ris12/19.png">
-    <img class="kartinki" src="Ris12/20.png">
-
+    <img class="kartinki" src="Ris12/12.png">
 </div>
 
 </div>
@@ -556,9 +560,112 @@ i{
 </div>
 
 
+<div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
+<h1 class ="kategorija_podborok">4. Сложные раскраски по номерам</h1>
+</div>
+
+
+<div class="nizniy_dla_kartinok">
+    <img class="kartinki" data-src="Ris12/500.png">
+    <img class="kartinki" data-src="Ris12/501.png">
+    <img class="kartinki" data-src="Ris12/502.png">
+    <img class="kartinki" data-src="Ris12/503.png">
+    <img class="kartinki" data-src="Ris12/504.png">
+    <img class="kartinki" data-src="Ris12/505.png">
+    <img class="kartinki" data-src="Ris12/506.png">
+    <img class="kartinki" data-src="Ris12/507.png">
+    <img class="kartinki" data-src="Ris12/508.png">
+    <img class="kartinki" data-src="Ris12/509.png">
+    <img class="kartinki" data-src="Ris12/510.png">
+    <img class="kartinki" data-src="Ris12/511.png">
+    <img class="kartinki" data-src="Ris12/512.png">
+    <img class="kartinki" data-src="Ris12/513.png">
+    <img class="kartinki" data-src="Ris12/514.png">
+    <img class="kartinki" data-src="Ris12/515.png">
+    <img class="kartinki" data-src="Ris12/516.png">
+    <img class="kartinki" data-src="Ris12/517.png">
+    <img class="kartinki" data-src="Ris12/518.png">
+    <img class="kartinki" data-src="Ris12/519.png">
+    <img class="kartinki" data-src="Ris12/520.png">
+</div>
+
 
 <div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
-<h1 class ="kategorija_podborok">4. Раскраски из мультфильмов «Маша и медведь», «Микки Маус», «Лунтик»,<br> «Малыш и Карлсон», «Ну погоди!», «Колобок», «Незнайка», «Барбоскины», «Мадагаскар»,<br> «Шрек», «Ледниковый период».</h1>
+<h1 class ="kategorija_podborok">5. Дорисовать симметричную картинку по клеточкам</h1>
+</div>
+
+
+<div class="nizniy_dla_kartinok">
+    <img class="kartinki kartinki-grid" data-src="Ris12/600_grid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/601_grid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/602_grid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/603_grid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/604_grid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/605_grid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/606_grid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/607_grid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/608_grid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/609_grid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/610_grid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/611_grid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/612_grid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/613_grid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/614_grid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/615_grid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/616_grid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/617_grid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/618_grid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/619_grid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/620_grid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/621_grid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/622_grid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/623_grid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/624_grid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/625_grid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/626_grid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/627_grid.png">
+</div>
+
+<div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
+<h1 class ="kategorija_podborok">6. Нарисовать картинку по клеточкам</h1>
+</div>
+
+
+<div class="nizniy_dla_kartinok">
+    <img class="kartinki kartinki-grid" data-src="Ris12/630_sectiongrid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/631_sectiongrid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/632_sectiongrid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/633_sectiongrid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/634_sectiongrid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/635_sectiongrid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/636_sectiongrid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/637_sectiongrid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/638_sectiongrid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/639_sectiongrid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/640_sectiongrid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/641_sectiongrid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/642_sectiongrid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/643_sectiongrid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/644_sectiongrid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/645_sectiongrid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/646_sectiongrid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/647_sectiongrid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/648_sectiongrid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/649_sectiongrid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/650_sectiongrid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/651_sectiongrid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/652_sectiongrid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/653_sectiongrid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/654_sectiongrid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/655_sectiongrid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/656_sectiongrid.png">
+    <img class="kartinki kartinki-grid" data-src="Ris12/657_sectiongrid.png">
+</div>
+
+
+
+<div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
+<h1 class ="kategorija_podborok">7. Раскраски из мультфильмов «Маша и медведь», «Микки Маус», «Лунтик»,<br> «Малыш и Карлсон», «Ну погоди!», «Колобок», «Незнайка», «Барбоскины», «Мадагаскар»,<br> «Шрек», «Ледниковый период».</h1>
 
 </div>
 
@@ -594,7 +701,7 @@ i{
 </div>
 
 <div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
-<h1 class ="kategorija_podborok">5. Раскраски из мультфильмов «Рио», «Гадкий Я», «Соник Икс», «Скубл-ду», «Чип и Дейл»,<br> «Покемоны», «Три богатыря», «Винни-Пух».</h1>
+<h1 class ="kategorija_podborok">8. Раскраски из мультфильмов «Рио», «Гадкий Я», «Соник Икс», «Скубл-ду», «Чип и Дейл»,<br> «Покемоны», «Три богатыря», «Винни-Пух».</h1>
 </div>
 
 
@@ -630,7 +737,7 @@ i{
 </div>
 
 <div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
-<h1 class ="kategorija_podborok">6. Раскраски из мультфильмов «Город героев» и «Даша Путешественница». </h1>
+<h1 class ="kategorija_podborok">9. Раскраски из мультфильмов «Город героев» и «Даша Путешественница». </h1>
 </div>
 
 
@@ -666,7 +773,7 @@ i{
 </div>
 
 <div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
-<h1 class ="kategorija_podborok">7. Раскраски из мультфильмов «Друзья Ангелов», «Бэмби», «Простоквашино», «Пчёлка Майя», «Доктор Айболит», «Попугай Кеша».</h1>
+<h1 class ="kategorija_podborok">10. Раскраски из мультфильмов «Друзья Ангелов», «Бэмби», «Простоквашино», «Пчёлка Майя», «Доктор Айболит», «Попугай Кеша».</h1>
 </div>
 
 
@@ -702,7 +809,7 @@ i{
 </div>
 
 <div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
-<h1 class ="kategorija_podborok">8. Раскраски из мультфильмов «Фунтик», «Шарлота Земляничка». </h1>
+<h1 class ="kategorija_podborok">11. Раскраски из мультфильмов «Фунтик», «Шарлота Земляничка». </h1>
 </div>
 
 
@@ -738,7 +845,7 @@ i{
 </div>
 
 <div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
-<h1 class ="kategorija_podborok">9. Раскраски из мультфильмов «Чиполлино», «Том и Анжела», «Спящая красавица»,<br> «Король Лев».</h1>
+<h1 class ="kategorija_podborok">12. Раскраски из мультфильмов «Чиполлино», «Том и Анжела», «Спящая красавица»,<br> «Король Лев».</h1>
 </div>
 
 
@@ -775,7 +882,7 @@ i{
 
 
 <div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
-<h1 class ="kategorija_podborok">10. Раскраски «Цветы»</h1>
+<h1 class ="kategorija_podborok">13. Раскраски «Цветы»</h1>
 </div>
 
 
@@ -811,7 +918,7 @@ i{
 </div>
 
 <div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
-<h1 class ="kategorija_podborok">11. Раскраски «Насекомые»</h1>
+<h1 class ="kategorija_podborok">14. Раскраски «Насекомые»</h1>
 </div>
 
 
@@ -848,7 +955,7 @@ i{
 
 
 <div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
-<h1 class ="kategorija_podborok">12. Раскраски «Рыбы»</h1>
+<h1 class ="kategorija_podborok">15. Раскраски «Рыбы»</h1>
 </div>
 
 
@@ -885,7 +992,7 @@ i{
 
 
 <div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
-<h1 class ="kategorija_podborok">13. Раскраски «Животные»</h1>
+<h1 class ="kategorija_podborok">16. Раскраски «Животные»</h1>
 </div>
 
 
@@ -922,7 +1029,7 @@ i{
 
 
 <div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
-<h1 class ="kategorija_podborok">14. Раскраски «Девочки из мультфильмов»</h1>
+<h1 class ="kategorija_podborok">17. Раскраски «Девочки из мультфильмов»</h1>
 </div>
 
 
@@ -958,7 +1065,7 @@ i{
 </div>
 
 <div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
-<h1 class ="kategorija_podborok">15. Раскраски «Рисунки и узоры по клеточкам»</h1>
+<h1 class ="kategorija_podborok">18. Раскраски «Рисунки и узоры по клеточкам»</h1>
 </div>
 
 
@@ -981,7 +1088,7 @@ i{
 
 
 <div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
-<h1 class ="kategorija_podborok">16. Раскраски «Куклы Лол»</h1>
+<h1 class ="kategorija_podborok">19. Раскраски «Куклы Лол»</h1>
 </div>
 
 
@@ -1017,7 +1124,7 @@ i{
 </div>
 
 <div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
-<h1 class ="kategorija_podborok">17. Раскраски «Природа»</h1>
+<h1 class ="kategorija_podborok">20. Раскраски «Природа»</h1>
 </div>
 
 
@@ -1054,7 +1161,7 @@ i{
 
 
 <div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
-<h1 class ="kategorija_podborok">18. Раскраски для мальчиков</h1>
+<h1 class ="kategorija_podborok">21. Раскраски для мальчиков</h1>
 </div>
 
 
@@ -1090,34 +1197,7 @@ i{
 </div>
 
 
-<div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
-<h1 class ="kategorija_podborok">19. Сложные раскраски по номерам</h1>
-</div>
 
-
-<div class="nizniy_dla_kartinok">
-    <img class="kartinki" data-src="Ris12/500.png">
-    <img class="kartinki" data-src="Ris12/501.png">
-    <img class="kartinki" data-src="Ris12/502.png">
-    <img class="kartinki" data-src="Ris12/503.png">
-    <img class="kartinki" data-src="Ris12/504.png">
-    <img class="kartinki" data-src="Ris12/505.png">
-    <img class="kartinki" data-src="Ris12/506.png">
-    <img class="kartinki" data-src="Ris12/507.png">
-    <img class="kartinki" data-src="Ris12/508.png">
-    <img class="kartinki" data-src="Ris12/509.png">
-    <img class="kartinki" data-src="Ris12/510.png">
-    <img class="kartinki" data-src="Ris12/511.png">
-    <img class="kartinki" data-src="Ris12/512.png">
-    <img class="kartinki" data-src="Ris12/513.png">
-    <img class="kartinki" data-src="Ris12/514.png">
-    <img class="kartinki" data-src="Ris12/515.png">
-    <img class="kartinki" data-src="Ris12/516.png">
-    <img class="kartinki" data-src="Ris12/517.png">
-    <img class="kartinki" data-src="Ris12/518.png">
-    <img class="kartinki" data-src="Ris12/519.png">
-    <img class="kartinki" data-src="Ris12/520.png">
-</div>
 
 
 
@@ -1170,8 +1250,6 @@ const дляВыключателяЛиний = document.getElementById('дляВ
 const выключательДляНомеров = document.getElementById('выключательДляНомеров');
 const выключательДляЛиний = document.getElementById('выключательДляЛиний');
 var ctx = canvas.getContext('2d');
-ctx.imageSmoothingEnabled = false;
-ctx.lineJoin = 'round';
 ctx.lineWidth = 3;
 var cvet = document.getElementsByClassName('cvet');
 var colors = [[0,0,0], [192,192,192], [255,0,0], [255,128,0], [255,255,0], [0,255,0], [128,255,255], [0,0,255], [255,128,255], [255,255,255],   [128,0,0], [128,64,0], [255,0,128], [128,128,0], [0,128,0], [0,255,128], [64,128,128], [0,0,128], [128,64,128], [128,128,128]];
@@ -1195,8 +1273,8 @@ for (let i = 0; i < cvet.length; i++) {
 
 function getCoords(event) {
   return {
-    x: Math.round(event.offsetX / canvas.clientWidth * (outlineImage.width || canvas.clientWidth)),
-    y: Math.round(event.offsetY / canvas.clientHeight * (outlineImage.height || canvas.clientHeight))
+    x: Math.round(event.offsetX / canvas.clientWidth * (imageWidth || canvas.clientWidth)),
+    y: Math.round(event.offsetY / canvas.clientHeight * (imageHeight || canvas.clientHeight))
   };
 }
 
@@ -1212,6 +1290,13 @@ function setColorInt(color) {
       ctx.strokeStyle = currentColor;
     }
 }
+
+document.addEventListener('keydown', event => {
+  if (previousImageData && event.keyCode === 90 && (event.ctrlKey || event.metaKey)) {
+   ctx.putImageData(previousImageData, 0, 0);
+   previousImageData = null;
+  }
+});
 
 canvas.addEventListener('mousedown', function (event) {
   if (event.which === 3) {
@@ -1242,14 +1327,18 @@ canvas.addEventListener('mousedown', function (event) {
       highlightCurrent(document.querySelector('.panel-button[data-mode="fill"]'));
     }
   } else if (event.which === 1) {
+    if (!mouseDown) {
+     previousImageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    }
+
     if (currentMode === 'paint' || currentMode === 'lastik') {
-      mouseDown = true;
       ctx.beginPath();
     }
     else {
       floodFill(x, y, cvet_zalivki);
     }
 
+    mouseDown = true;
   }
 });
 
@@ -1260,8 +1349,13 @@ canvas.addEventListener('mousemove', function (event) {
   }
 
   const {x, y} = getCoords(event);
-  ctx.lineTo(x, y);
-  ctx.stroke();
+
+  if (currentMode === 'paint' || currentMode === 'lastik') {
+    ctx.lineTo(x, y);
+    ctx.stroke();
+  } else if (currentMode === 'fill') {
+    floodFill(x, y, cvet_zalivki);
+  }
 });
 
 canvas.addEventListener('mouseup', function (event) {
@@ -1290,6 +1384,7 @@ for (const link of document.querySelectorAll('.paneli2 .panel-button')) {
         currentMode = 'paint';
         ctx.lineWidth = 3;
         ctx.strokeStyle = currentColor;
+        ctx.lineJoin = 'round';
         break;
       case "pipetka":
         currentMode = 'pipetka';
@@ -1298,6 +1393,7 @@ for (const link of document.querySelectorAll('.paneli2 .panel-button')) {
         currentMode = 'lastik';
         ctx.lineWidth = 30;
         ctx.strokeStyle = 'white';
+        ctx.lineJoin = 'round';
         break;
     }
   });
@@ -1314,16 +1410,81 @@ function highlightCurrent(element) {
 
 const outlineImage = new Image();
 let originalImageArray;
+let isGridImage = false;
+let isSectionGridImage = false;
+let gridStep;
+let imageWidth;
+let imageHeight;
+let previousImageData = null;
 
 outlineImage.onload = function () {
-  container.style.width = outlineImage.width + 'px';
-  container.style.height = outlineImage.height + 'px';
-  overlay.width = outlineImage.width;
-  overlay.height = outlineImage.height;
-  canvas.width = outlineImage.width;
-  canvas.height = outlineImage.height;
+  previousImageData = null;
+  isGridImage = !!outlineImage.src.match(/grid\.png$/i);
+  isSectionGridImage = !!outlineImage.src.match(/_sectiongrid\.png$/i);
+  gridStep = isSectionGridImage ? 14 : 30;
+  выключательДляЛиний.classList.toggle('hidden', isGridImage);
+
+  if (isGridImage) {
+    imageWidth = outlineImage.width * gridStep;
+    imageHeight = outlineImage.height * gridStep;
+  } else {
+    imageWidth = outlineImage.width;
+    imageHeight = outlineImage.height;
+  }
+
+  container.style.width = imageWidth + 'px';
+  container.style.height = imageHeight + 'px';
+  overlay.width = imageWidth;
+  overlay.height = imageHeight;
+  canvas.width = imageWidth;
+  canvas.height = imageHeight;
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.imageSmoothingEnabled = false;
   ctx.drawImage(outlineImage, 0, 0, canvas.width, canvas.height);
+
+  if (isGridImage) {
+    ctx.strokeStyle = '#000';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+
+    for (let x = 0; x <= outlineImage.width; x++) {
+      ctx.moveTo(Math.round(x * gridStep) + 0.5, 0);
+      ctx.lineTo(Math.round(x * gridStep) + 0.5, imageHeight);
+    }
+
+    for (let y = 0; y <= outlineImage.height; y++) {
+      ctx.moveTo(0, Math.round(y * gridStep) + 0.5);
+      ctx.lineTo(imageWidth, Math.round(y * gridStep) + 0.5);
+    }
+
+    ctx.stroke();
+
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(Math.round(imageWidth / 2) + 0.5, 0);
+    ctx.lineTo(Math.round(imageWidth / 2) + 0.5, imageHeight);
+    ctx.stroke();
+
+    if (isSectionGridImage) {
+      for (let x = 0; x <= outlineImage.width / 2; x += 5) {
+        ctx.moveTo(Math.round(x * gridStep) + 0.5, 0);
+        ctx.lineTo(Math.round(x * gridStep) + 0.5, imageHeight);
+      }
+
+      for (let x = outlineImage.width / 2; x <= outlineImage.width; x += 5) {
+        ctx.moveTo(Math.round(x * gridStep) + 0.5, 0);
+        ctx.lineTo(Math.round(x * gridStep) + 0.5, imageHeight);
+      }
+
+      for (let y = 0; y <= outlineImage.height; y += 5) {
+        ctx.moveTo(0, Math.round(y * gridStep) + 0.5);
+        ctx.lineTo(imageWidth, Math.round(y * gridStep) + 0.5);
+      }
+
+      ctx.stroke();
+    }
+  }
+
   ctx.strokeStyle = currentColor;
 
   try {
@@ -1355,14 +1516,14 @@ for(let i = 0; i < kartinki.length; ++i){
    kartinki[i].addEventListener('click', up);
 }
 
-
+// Array.from(document.querySelectorAll('.kartinki')).indexOf($0)
 kartinki[0].click();// outlineImage.src = "Ris12/480.png";
 
 // kartinki[5].click(); // outlineImage.src = "Ris12/537.png"; на новый год
 
 var t; //прокрутка вверх по клику на картинке
 function up() {
-  window.scrollTo(0, 750);
+  window.scrollTo(0, 850);
   return false;
 }
 
@@ -1392,8 +1553,19 @@ function floodFill(x, y, color){
 
   if (originalColor !== 0xFFFFFFFF) {
     // Не белый изначально
-    setColorInt(originalColor);
+    if (!mouseDown) {
+      setColorInt(originalColor);
+    }
+
     return;
+  }
+
+  if (isGridImage && Math.ceil(x / gridStep) <= Math.ceil(outlineImage.width / 2)) {
+    return;
+  }
+
+  if (!mouseDown) {
+    previousImageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   }
 
   while (stack.length > 0) {
