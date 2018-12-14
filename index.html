@@ -7,7 +7,7 @@
 
   <title>Раскраска картинок онлайн</title>
 
-  <meta name="description" content="Раскраска картинок по номерам, цветы и узоры по клеточкам, раскраска для детей и взрослых, нарисовать по клеточкам, дорисовать картинку по клеточкам, раскраски из мультфильмов">
+  <meta name="description" content="Раскраска картинок по номерам, новогодние анимации, цветы и узоры по клеточкам, раскраска для детей и взрослых, нарисовать по клеточкам, дорисовать картинку по клеточкам, раскраски из мультфильмов">
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-117113579-2"></script>
@@ -168,6 +168,15 @@ body{
    z-index: 5;
 }
 
+.kartinki_anime {
+   width: 550px;
+   cursor: pointer;
+   margin: 15px 15px;
+   background-color: rgb(213, 247, 237);
+   border-radius: 10px;
+   z-index: 5;
+}
+
 .kartinki:hover{
   background-color: rgb(222, 202, 237);
   box-shadow: 0 5px 5px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
@@ -261,6 +270,10 @@ i{
   display: none;
 }
 
+.loading{
+  opacity: 0.5;
+}
+
 #dla_verhn_ris{
   width: 1200px;
   margin: auto;
@@ -349,6 +362,8 @@ i{
 <div id="dla_verhn_ris">
    <img id="verhn_ris" src="Ris12/verhn_ris2.png">
 </div>
+
+<div style="height: 30px; background: url(https://mnogoblog.ru/wp-content/uploads/2014/12/girlanda.gif) repeat-x 100%;"></div>
 
 <div class="obchaja_ramka">
 <div class="dla_risunkov">
@@ -461,6 +476,8 @@ i{
 
 </div>
 
+<div style="height: 30px; background: url(https://mnogoblog.ru/wp-content/uploads/2014/12/girlanda.gif) repeat-x 100%;"></div>
+
 
 <h1 id ="zagolovok2" onmousedown="return false" onselectstart="return false">ТЕМАТИЧЕСКИЕ ПОДБОРКИ РАСКРАСОК</h1>
 
@@ -530,8 +547,34 @@ i{
 </div>
 
 
+
 <div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
-<h1 class ="kategorija_podborok">3. Новогодние раскраски по номерам</h1>
+<h1 class ="kategorija_podborok">3. Новогодние анимации</h1>
+</div>
+
+<div class="nizniy_dla_kartinok">
+    <img class="kartinki_anime" data-src="Ris12/700.png">
+    <img class="kartinki_anime" data-src="Ris12/701.png">
+    <img class="kartinki_anime" data-src="Ris12/702.png">
+    <img class="kartinki_anime" data-src="Ris12/703.png">
+    <img class="kartinki_anime" data-src="Ris12/704.png">
+    <img class="kartinki_anime" data-src="Ris12/705.png">
+    <img class="kartinki_anime" data-src="Ris12/706.png">
+    <img class="kartinki_anime" data-src="Ris12/707.png">
+    <img class="kartinki_anime" data-src="Ris12/708.png">
+    <img class="kartinki_anime" data-src="Ris12/709.png">
+    <img class="kartinki_anime" data-src="Ris12/710.png">
+    <img class="kartinki_anime" data-src="Ris12/711.png">
+    <img class="kartinki_anime" data-src="Ris12/712.png">
+    <img class="kartinki_anime" data-src="Ris12/713.png">
+    <img class="kartinki_anime" data-src="Ris12/714.png">
+    <img class="kartinki_anime" data-src="Ris12/715.png">
+    <h3 id="blagodarnost">Использованы картинки с сайта <a href="http://komotoz.ru/">komotoz.ru</a> </h3>
+</div>
+
+
+<div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
+<h1 class ="kategorija_podborok">4. Новогодние раскраски по номерам</h1>
 </div>
 
 
@@ -561,7 +604,7 @@ i{
 
 
 <div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
-<h1 class ="kategorija_podborok">4. Сложные раскраски по номерам</h1>
+<h1 class ="kategorija_podborok">5. Сложные раскраски по номерам</h1>
 </div>
 
 
@@ -591,7 +634,7 @@ i{
 
 
 <div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
-<h1 class ="kategorija_podborok">5. Дорисовать симметричную картинку по клеточкам</h1>
+<h1 class ="kategorija_podborok">6. Дорисовать симметричную картинку по клеточкам</h1>
 </div>
 
 
@@ -627,7 +670,7 @@ i{
 </div>
 
 <div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
-<h1 class ="kategorija_podborok">6. Нарисовать картинку по клеточкам</h1>
+<h1 class ="kategorija_podborok">7. Нарисовать картинку по клеточкам</h1>
 </div>
 
 
@@ -664,7 +707,7 @@ i{
 
 
 <div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
-<h1 class ="kategorija_podborok">7. Цветы и узоры по клеточкам</h1>
+<h1 class ="kategorija_podborok">8. Цветы и узоры по клеточкам</h1>
 </div>
 
 
@@ -695,7 +738,7 @@ i{
 
 
 <div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
-<h1 class ="kategorija_podborok">8. Раскраски из мультфильмов «Маша и медведь», «Микки Маус», «Лунтик»,<br> «Малыш и Карлсон», «Ну погоди!», «Колобок», «Незнайка», «Барбоскины», «Мадагаскар»,<br> «Шрек», «Ледниковый период».</h1>
+<h1 class ="kategorija_podborok">9. Раскраски из мультфильмов «Маша и медведь», «Микки Маус», «Лунтик»,<br> «Малыш и Карлсон», «Ну погоди!», «Колобок», «Незнайка», «Барбоскины», «Мадагаскар»,<br> «Шрек», «Ледниковый период».</h1>
 
 </div>
 
@@ -731,7 +774,7 @@ i{
 </div>
 
 <div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
-<h1 class ="kategorija_podborok">9. Раскраски из мультфильмов «Рио», «Гадкий Я», «Соник Икс», «Скубл-ду», «Чип и Дейл»,<br> «Покемоны», «Три богатыря», «Винни-Пух».</h1>
+<h1 class ="kategorija_podborok">10. Раскраски из мультфильмов «Рио», «Гадкий Я», «Соник Икс», «Скубл-ду», «Чип и Дейл»,<br> «Покемоны», «Три богатыря», «Винни-Пух».</h1>
 </div>
 
 
@@ -767,7 +810,7 @@ i{
 </div>
 
 <div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
-<h1 class ="kategorija_podborok">10. Раскраски из мультфильмов «Город героев» и «Даша Путешественница». </h1>
+<h1 class ="kategorija_podborok">11. Раскраски из мультфильмов «Город героев» и «Даша Путешественница». </h1>
 </div>
 
 
@@ -803,7 +846,7 @@ i{
 </div>
 
 <div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
-<h1 class ="kategorija_podborok">11. Раскраски из мультфильмов «Друзья Ангелов», «Бэмби», «Простоквашино», «Пчёлка Майя», «Доктор Айболит», «Попугай Кеша».</h1>
+<h1 class ="kategorija_podborok">12. Раскраски из мультфильмов «Друзья Ангелов», «Бэмби», «Простоквашино», «Пчёлка Майя», «Доктор Айболит», «Попугай Кеша».</h1>
 </div>
 
 
@@ -839,7 +882,7 @@ i{
 </div>
 
 <div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
-<h1 class ="kategorija_podborok">12. Раскраски из мультфильмов «Фунтик», «Шарлота Земляничка». </h1>
+<h1 class ="kategorija_podborok">13. Раскраски из мультфильмов «Фунтик», «Шарлота Земляничка». </h1>
 </div>
 
 
@@ -875,7 +918,7 @@ i{
 </div>
 
 <div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
-<h1 class ="kategorija_podborok">13. Раскраски из мультфильмов «Чиполлино», «Том и Анжела», «Спящая красавица»,<br> «Король Лев».</h1>
+<h1 class ="kategorija_podborok">14. Раскраски из мультфильмов «Чиполлино», «Том и Анжела», «Спящая красавица»,<br> «Король Лев».</h1>
 </div>
 
 
@@ -912,7 +955,7 @@ i{
 
 
 <div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
-<h1 class ="kategorija_podborok">14. Раскраски «Цветы»</h1>
+<h1 class ="kategorija_podborok">15. Раскраски «Цветы»</h1>
 </div>
 
 
@@ -948,7 +991,7 @@ i{
 </div>
 
 <div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
-<h1 class ="kategorija_podborok">15. Раскраски «Насекомые»</h1>
+<h1 class ="kategorija_podborok">16. Раскраски «Насекомые»</h1>
 </div>
 
 
@@ -985,7 +1028,7 @@ i{
 
 
 <div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
-<h1 class ="kategorija_podborok">16. Раскраски «Рыбы»</h1>
+<h1 class ="kategorija_podborok">17. Раскраски «Рыбы»</h1>
 </div>
 
 
@@ -1022,7 +1065,7 @@ i{
 
 
 <div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
-<h1 class ="kategorija_podborok">17. Раскраски «Животные»</h1>
+<h1 class ="kategorija_podborok">18. Раскраски «Животные»</h1>
 </div>
 
 
@@ -1059,7 +1102,7 @@ i{
 
 
 <div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
-<h1 class ="kategorija_podborok">18. Раскраски «Девочки из мультфильмов»</h1>
+<h1 class ="kategorija_podborok">19. Раскраски «Девочки из мультфильмов»</h1>
 </div>
 
 
@@ -1096,7 +1139,7 @@ i{
 
 
 <div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
-<h1 class ="kategorija_podborok">19. Раскраски «Куклы Лол»</h1>
+<h1 class ="kategorija_podborok">20. Раскраски «Куклы Лол»</h1>
 </div>
 
 
@@ -1132,7 +1175,7 @@ i{
 </div>
 
 <div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
-<h1 class ="kategorija_podborok">20. Раскраски «Природа»</h1>
+<h1 class ="kategorija_podborok">21. Раскраски «Природа»</h1>
 </div>
 
 
@@ -1169,7 +1212,7 @@ i{
 
 
 <div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
-<h1 class ="kategorija_podborok">21. Раскраски для мальчиков</h1>
+<h1 class ="kategorija_podborok">22. Раскраски для мальчиков</h1>
 </div>
 
 
@@ -1203,13 +1246,6 @@ i{
     <img class="kartinki" data-src="Ris12/406.png">
     <img class="kartinki" data-src="Ris12/407.png">
 </div>
-
-
-
-
-
-
-
 
 
 
@@ -1528,9 +1564,9 @@ for(let i = 0; i < kartinki.length; ++i){
 }
 
 // Array.from(document.querySelectorAll('.kartinki')).indexOf($0)
-kartinki[0].click();// outlineImage.src = "Ris12/480.png";
+// kartinki[0].click();// outlineImage.src = "Ris12/480.png";
 
-// kartinki[5].click(); // outlineImage.src = "Ris12/537.png"; на новый год
+kartinki[5].click(); // outlineImage.src = "Ris12/537.png"; на новый год
 
 var t; //прокрутка вверх по клику на картинке
 function up() {
@@ -1697,6 +1733,36 @@ function fillLines() {
 
   ctx.putImageData(imageData, 0, 0);
 }
+
+
+for (const картинка of document.getElementsByClassName('kartinki_anime')) {
+  картинка.addEventListener('click', () => {
+    if (картинка.classList.contains('loading')) {
+      return;
+    }
+
+    if (картинка.src.includes('.png')){
+      картинка.src = картинка.src.replace('.png', '.gif');
+      картинка.classList.add('loading');
+
+      картинка.onload = function () {
+        картинка.classList.remove('loading');
+      }
+    }else{
+      картинка.src = картинка.src.replace('.gif', '.png');
+    }
+  });
+}
+
+// const картинкиДляАнимации = document.getElementsByClassName('kartinki_anime'); //второй вариант кода
+// for(let i = 0; i < картинкиДляАнимации.length; i++){
+// картинкиДляАнимации[i].addEventListener('click', Анимировать);
+
+//   function Анимировать(){
+//     картинкиДляАнимации[i].src = картинкиДляАнимации[i].src.replace('.png', '.gif');
+//   }
+// }
+
 
 </script>
 
