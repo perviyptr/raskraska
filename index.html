@@ -407,9 +407,7 @@ i{
     <li>Можно раскрашивать каждую область отдельно по клику мыши или группу областей одновременно, проводя по ним курсором с нажатой левой кнопкой мыши.</li>
     <li>Для сохранения картинки щёлкните правой кнопкой мыши на холсте и выберите
     <i>Сохраниь картинку как</i>...</li>
-   </li>
-    <li>Можно закрасить с помощью кнопки <i>Закрасить линии разметки</i> лишние линии (это необходимо в основном для сложных раскрасок по номерам).<br>
-   </li>
+    </li>
     <li>Отменить одно последнее действие можно комбинацией клавиш Ctrl + Z.</li>
     <li>Для увеличения изображения на холсте пользуйтесь колёсиком мыши с нажатой клавишей "Ctrl".</li>
     <li>Ниже находится много тематических подборок картинок для раскраски.
@@ -524,6 +522,13 @@ i{
     <img class="kartinki" data-src="Ris12/1818.png">
     <img class="kartinki" data-src="Ris12/1819.png">
     <img class="kartinki" data-src="Ris12/1820.png">
+    <!-- <img class="kartinki" data-src="Ris12/1821.png">
+    <img class="kartinki" data-src="Ris12/1822.png">
+    <img class="kartinki" data-src="Ris12/1823.png">
+    <img class="kartinki" data-src="Ris12/1824.png">
+    <img class="kartinki" data-src="Ris12/1825.png">
+    <img class="kartinki" data-src="Ris12/1826.png">
+    <img class="kartinki" data-src="Ris12/1827.png"> -->
 </div>
 
 <div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
@@ -1942,10 +1947,16 @@ let previousImageData = null;
 
 outlineImage.onload = function () {
   previousImageData = null;
+  const match = outlineImage.src.split('/').pop().match(/(\d+)/i);
+  const imageNumber = match ? Number(match[1]) : 0;
   isGridImage = !!outlineImage.src.match(/grid\.png$/i);
   isSectionGridImage = !!outlineImage.src.match(/_sectiongrid\.png$/i);
   gridStep = Math.min(Math.round(1150 / outlineImage.width), 25);
-  выключательДляЛиний.classList.toggle('hidden', isGridImage);
+  выключательДляЛиний.classList.toggle('hidden', isGridImage
+    || !((imageNumber > 499 && imageNumber < 521)
+    ||(imageNumber > 799 && imageNumber < 807)
+    ||(imageNumber > 949 && imageNumber < 957))
+  );
 
   if (isGridImage) {
     imageWidth = outlineImage.width * gridStep;
