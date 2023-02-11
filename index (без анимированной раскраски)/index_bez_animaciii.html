@@ -364,24 +364,6 @@ i{
 .анимированныеСсылки:hover{
   outline: solid 3px red;
   }
-
-#canvas1 {
-  z-index: 1;
-}
-
-#canvas2 {
-  z-index: 2;
-}
-
-@keyframes circle {
-  0% { clip-path: circle(0% at var(--mouse-x) var(--mouse-y)); }
-  100% { clip-path: circle(150% at var(--mouse-x) var(--mouse-y)); }
-}
-
-:root {
-  --mouse-x: 0px;
-  --mouse-y: 0px;
-}
   </style>
 </head>
 
@@ -485,8 +467,7 @@ i{
 
 
 <div id="canvas-container">
-  <canvas id="canvas1" class="canvas" width="550" height="550"></canvas>
-  <canvas id="canvas2" class="canvas" width="550" height="550"></canvas>
+  <canvas id="canvas" class="canvas" width="550" height="550"></canvas>
   <img id="canvas-overlay" width="550" height="550" src="" onerror="this.style.display='none'">
 </div>
 
@@ -723,7 +704,7 @@ i{
 </div>
 
 
-<!--<div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
+<div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
 <h1 class ="kategorija_podborok">Оригинальные картинки (по образцу)</h1>
 </div>
 
@@ -757,7 +738,8 @@ i{
     <img class="kartinki" data-src="Ris12/3026.png">
     <img class="kartinki" data-src="Ris12/3027.png">
     <img class="kartinki" data-src="Ris12/3028.png">
-</div>-->
+</div>
+
 
 <div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
 <h1 class ="kategorija_podborok">Девушки аниме</h1>
@@ -1894,9 +1876,7 @@ const выборщикЦветов = new CP(colorInput, false, document.querySel
 
 var mouseDown = false;
 var currentMode = 'fill';
-const canvas1 = document.getElementById('canvas1');
-const canvas2 = document.getElementById('canvas2');
-let canvas = canvas2;
+const canvas = document.getElementById('canvas');
 const container = document.getElementById('canvas-container');
 const overlay = document.getElementById('canvas-overlay');
 const дляВыключателяНомеров = document.getElementById('дляВыключателяНомеров');
@@ -1952,111 +1932,106 @@ document.addEventListener('keydown', event => {
   }
 });
 
-for (const canv of [canvas1, canvas2]) {
-  canv.addEventListener('mousedown', function (event) {
-    if (event.which === 3) {
+canvas.addEventListener('mousedown', function (event) {
+  if (event.which === 3) {
+    return;
+  }
+
+  event.preventDefault();
+
+  const {x, y} = getCoords(event);
+
+  if (event.which === 2 || event.which === 1 && currentMode === 'pipetka') {
+    // Пипетка
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const imageArray = new Uint32Array(imageData.data.buffer);
+    const width = imageData.width;
+    const height = imageData.height;
+
+    if (x < 0 || x >= width)
       return;
+    if (y < 0 || y >= height)
+      return;
+
+    const point = y * width + x;
+    setColorInt(imageArray[point]);
+
+    if (currentMode === 'pipetka') {
+      currentMode = 'fill';
+      highlightCurrent(document.querySelector('.panel-button[data-mode="fill"]'));
     }
-
-    event.preventDefault();
-
-    const {x, y} = getCoords(event);
-
-    if (event.which === 2 || event.which === 1 && currentMode === 'pipetka') {
-      // Пипетка
-      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-      const imageArray = new Uint32Array(imageData.data.buffer);
-      const width = imageData.width;
-      const height = imageData.height;
-
-      if (x < 0 || x >= width)
-        return;
-      if (y < 0 || y >= height)
-        return;
-
-      const point = y * width + x;
-      setColorInt(imageArray[point]);
-
-      if (currentMode === 'pipetka') {
-        currentMode = 'fill';
-        highlightCurrent(document.querySelector('.panel-button[data-mode="fill"]'));
-      }
-    } else if (event.which === 1) {
-      if (!mouseDown) {
-       previousImageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-      }
-
-      if (currentMode === 'paint' || currentMode === 'lastik') {
-        ctx.beginPath();
-      }
-      else {
-        document.documentElement.style.setProperty('--mouse-x', event.offsetX + 'px');
-        document.documentElement.style.setProperty('--mouse-y', event.offsetY + 'px');
-        floodFill(x, y, cvet_zalivki);
-      }
-
-      mouseDown = true;
-    }
-  });
-
-  canv.addEventListener('mousemove', function (event) {
+  } else if (event.which === 1) {
     if (!mouseDown) {
-      return;
+     previousImageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
     }
-
-    const {x, y} = getCoords(event);
 
     if (currentMode === 'paint' || currentMode === 'lastik') {
-      ctx.lineTo(x, y);
-      ctx.stroke();
-    } else if (currentMode === 'fill') {
-      document.documentElement.style.setProperty('--mouse-x', event.offsetX + 'px');
-      document.documentElement.style.setProperty('--mouse-y', event.offsetY + 'px');
+      ctx.beginPath();
+    }
+    else {
       floodFill(x, y, cvet_zalivki);
     }
-  });
 
-  canv.addEventListener('mouseup', function (event) {
-    mouseDown = false;
-  });
-
-    var ochistit = document.querySelector('#ochistit a');
-    ochistit.addEventListener("click", Oscistit_holst);
-    function Oscistit_holst(event){
-      event.preventDefault();
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      outlineImage.src = "Ris12/1303.png"; //пустая заставка
-    }
-
-  for (const link of document.querySelectorAll('.paneli2 .panel-button')) {
-    link.addEventListener('click', function (event) {
-      event.preventDefault();
-
-      var mode = link.dataset.mode;
-      highlightCurrent(link);
-
-      switch (mode) {
-        case "fill":
-          currentMode = 'fill';
-          break;
-        case "paint":
-          currentMode = 'paint';
-          ctx.lineWidth = 3;
-          ctx.strokeStyle = currentColor;
-          ctx.lineJoin = 'round';
-          break;
-        case "pipetka":
-          currentMode = 'pipetka';
-          break;
-        case "lastik":
-          currentMode = 'lastik';
-          ctx.lineWidth = 30;
-          ctx.strokeStyle = 'white';
-          ctx.lineJoin = 'round';
-          break;
-      }
-    });
+    mouseDown = true;
   }
+});
+
+
+canvas.addEventListener('mousemove', function (event) {
+  if (!mouseDown) {
+    return;
+  }
+
+  const {x, y} = getCoords(event);
+
+  if (currentMode === 'paint' || currentMode === 'lastik') {
+    ctx.lineTo(x, y);
+    ctx.stroke();
+  } else if (currentMode === 'fill') {
+    floodFill(x, y, cvet_zalivki);
+  }
+});
+
+canvas.addEventListener('mouseup', function (event) {
+  mouseDown = false;
+});
+
+  var ochistit = document.querySelector('#ochistit a');
+  ochistit.addEventListener("click", Oscistit_holst);
+  function Oscistit_holst(event){
+    event.preventDefault();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    outlineImage.src = "Ris12/1303.png"; //пустая заставка
+  }
+
+for (const link of document.querySelectorAll('.paneli2 .panel-button')) {
+  link.addEventListener('click', function (event) {
+    event.preventDefault();
+
+    var mode = link.dataset.mode;
+    highlightCurrent(link);
+
+    switch (mode) {
+      case "fill":
+        currentMode = 'fill';
+        break;
+      case "paint":
+        currentMode = 'paint';
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = currentColor;
+        ctx.lineJoin = 'round';
+        break;
+      case "pipetka":
+        currentMode = 'pipetka';
+        break;
+      case "lastik":
+        currentMode = 'lastik';
+        ctx.lineWidth = 30;
+        ctx.strokeStyle = 'white';
+        ctx.lineJoin = 'round';
+        break;
+    }
+  });
 }
 
 function highlightCurrent(element) {
@@ -2102,10 +2077,8 @@ outlineImage.onload = function () {
   container.style.height = imageHeight + 'px';
   overlay.width = imageWidth;
   overlay.height = imageHeight;
-  canvas1.width = imageWidth;
-  canvas1.height = imageHeight;
-  canvas2.width = imageWidth;
-  canvas2.height = imageHeight;
+  canvas.width = imageWidth;
+  canvas.height = imageHeight;
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.imageSmoothingEnabled = false;
   ctx.drawImage(outlineImage, 0, 0, canvas.width, canvas.height);
@@ -2199,7 +2172,6 @@ function up() {
 
 
 function floodFill(x, y, color){
-  const lower = canvas === canvas1 ? canvas2 : canvas1;
   const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   const imageArray = new Uint32Array(imageData.data.buffer);
   const width = imageData.width;
@@ -2274,17 +2246,7 @@ function floodFill(x, y, color){
       pixel[1] + 1
     ]);
   }
-
-  lower.getContext('2d').putImageData(imageData, 0, 0);
-  lower.style.animation = 'none';
-  lower.offsetHeight;
-  lower.style.animation = null;
-  lower.style.animation = '3s circle';
-  canvas.style.animation = 'none';
-  lower.style.zIndex = 2;
-  canvas.style.zIndex = 1;
-  canvas = lower;
-  ctx = canvas.getContext('2d');
+  ctx.putImageData(imageData, 0, 0);
 }
 
 var nizniy_dla_kartinok = document.getElementsByClassName('nizniy_dla_kartinok');
