@@ -1990,9 +1990,7 @@ for (const canv of [canvas1, canvas2]) {
         ctx.beginPath();
       }
       else {
-        document.documentElement.style.setProperty('--mouse-x', event.offsetX + 'px');
-        document.documentElement.style.setProperty('--mouse-y', event.offsetY + 'px');
-        floodFill(x, y, cvet_zalivki);
+        floodFill(x, y, cvet_zalivki, event);
       }
 
       mouseDown = true;
@@ -2010,9 +2008,7 @@ for (const canv of [canvas1, canvas2]) {
       ctx.lineTo(x, y);
       ctx.stroke();
     } else if (currentMode === 'fill') {
-      document.documentElement.style.setProperty('--mouse-x', event.offsetX + 'px');
-      document.documentElement.style.setProperty('--mouse-y', event.offsetY + 'px');
-      floodFill(x, y, cvet_zalivki);
+      floodFill(x, y, cvet_zalivki, event);
     }
   });
 
@@ -2198,7 +2194,7 @@ function up() {
 }
 
 
-function floodFill(x, y, color){
+function floodFill(x, y, color, event) {
   const lower = canvas === canvas1 ? canvas2 : canvas1;
   const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   const imageArray = new Uint32Array(imageData.data.buffer);
@@ -2234,6 +2230,9 @@ function floodFill(x, y, color){
   if (isGridImage && Math.ceil(x / gridStep) <= Math.ceil(outlineImage.width / 2)) {
     return;
   }
+
+  document.documentElement.style.setProperty('--mouse-x', event.offsetX + 'px');
+  document.documentElement.style.setProperty('--mouse-y', event.offsetY + 'px');
 
   if (!mouseDown) {
     previousImageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
