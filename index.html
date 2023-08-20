@@ -7,7 +7,7 @@
 
   <title>Раскраска картинок онлайн. Coloring Pictures Online</title>
 
-  <meta name="description" content="Раскраска, раскраски «Девушки», раскраски «Персонажи аниме», раскраска «Антистресс», раскраски для взрослых, раскраски «Лицо девушки», картины Рериха, раскраска по номерам, витражи, картины в стиле фэнтези, поп-арт, кубизм, модернизм">
+  <meta name="description" content="Раскраска, раскраски «Девушки», раскраски «Персонажи аниме», раскраска «Антистресс», раскраски для взрослых, хохлома, раскраски «Лицо девушки», картины Рериха, раскраска по номерам, витражи, картины в стиле фэнтези, поп-арт, кубизм, модернизм">
 
   <meta name="google-site-verification" content="RRmEM3IqjaCEpt6We1ed1AZgbbe6PJmHKAfXhhju1iE" />
 
@@ -69,6 +69,7 @@ body{
   width: 550px;
   height: 550px;
   max-width: 1200px;
+  max-height: 1200px;
   margin-top: 40px;
 }
 
@@ -79,6 +80,7 @@ body{
   background-image: url('Ris12/Фон3.jpg');
   z-index: 10;
   max-width: 1200px;
+  max-height: 1200px;
   position: absolute;
 }
 
@@ -501,6 +503,7 @@ i{
 <div class="paneli">
      <p id="ochistit" class="nadpisi_k_panelam"><a href="#clear">Очистить</a></p>
 </div>
+
 </div>
 
 <div class="dla_risunkov">
@@ -968,6 +971,36 @@ i{
     <img class="kartinki" data-src="Ris12/18021.png">
 
 </div>
+
+<!-- <div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
+<h1 class ="kategorija_podborok">Хохлома <font color="red" size="4">New!</font> </h1>
+</div>
+
+
+<div class="nizniy_dla_kartinok">
+    <img class="kartinki" data-src="Ris12/19001.png">
+    <img class="kartinki" data-src="Ris12/19002.png">
+    <img class="kartinki" data-src="Ris12/19003.png">
+    <img class="kartinki" data-src="Ris12/19004.png">
+    <img class="kartinki" data-src="Ris12/19005.png">
+    <img class="kartinki" data-src="Ris12/19006.png">
+    <img class="kartinki" data-src="Ris12/19007.png">
+    <img class="kartinki" data-src="Ris12/19008.png">
+    <img class="kartinki" data-src="Ris12/19009.png">
+    <img class="kartinki" data-src="Ris12/19010.png">
+    <img class="kartinki" data-src="Ris12/19011.png">
+    <img class="kartinki" data-src="Ris12/19012.png">
+    <img class="kartinki" data-src="Ris12/19013.png">
+    <img class="kartinki" data-src="Ris12/19014.png">
+    <img class="kartinki" data-src="Ris12/19015.png">
+    <img class="kartinki" data-src="Ris12/19016.png">
+    <img class="kartinki" data-src="Ris12/19017.png">
+    <img class="kartinki" data-src="Ris12/19018.png">
+    <img class="kartinki" data-src="Ris12/19019.png">
+    <img class="kartinki" data-src="Ris12/19020.png">
+    <img class="kartinki" data-src="Ris12/19021.png">
+
+</div> -->
 
 <div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
 <h1 class ="kategorija_podborok">Простые</h1>
@@ -1622,6 +1655,7 @@ function setColorInt(color) {
     }
 }
 
+
 document.addEventListener('keydown', event => {
   if (previousImageData && event.keyCode === 90 && (event.ctrlKey || event.metaKey)) {
    ctx.putImageData(previousImageData, 0, 0);
@@ -1699,6 +1733,11 @@ for (const canv of [canvas1, canvas2]) {
       event.preventDefault();
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       outlineImage.src = "Ris12/1303.png"; //пустая заставка
+
+/* overlay.classList.toggle('hidden', !выключательДляНомеров.checked); */
+ overlay.style.display = 'none';//убрать номера
+ выключательДляНомеров.checked = false;//убрать флажок с переключателя
+
     }
 
   for (const link of document.querySelectorAll('.paneli2 .panel-button')) {
@@ -1758,7 +1797,7 @@ outlineImage.onload = function () {
   isSectionGridImage = !!outlineImage.src.match(/_sectiongrid\.png$/i);
   gridStep = Math.min(Math.round(1150 / outlineImage.width), 25);
   выключательДляЛиний.classList.toggle('hidden', isGridImage
-    || !((imageNumber > 499 && imageNumber < 521)
+    || !((imageNumber > 18000 && imageNumber < 18022)
     ||(imageNumber > 799 && imageNumber < 807)
     ||(imageNumber > 949 && imageNumber < 957))
   );
@@ -1852,8 +1891,8 @@ for(let i = 0; i < kartinki.length; ++i){
     overlay.classList.remove('hidden');
     overlay.src = kartinki[i].src.replace(/(\.png)/i, '_overlay$1');
     overlay.style.display = 'none';
-    дляВыключателяНомеров.classList.add('hidden');
-  });
+   дляВыключателяНомеров.classList.add('hidden');
+    });
    kartinki[i].addEventListener('click', up);
 }
 
