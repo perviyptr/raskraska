@@ -82,6 +82,15 @@ body{
   max-width: 1200px;
   max-height: 1200px;
   position: absolute;
+
+ }
+
+ #canvas-overlay {
+  position: absolute;
+  pointer-events: none;
+  z-index: 11;
+  max-width: 1200px;
+  height: auto;
 }
 
 .paneli {
@@ -338,13 +347,7 @@ i{
   width: 100%;
   background: rgb(212, 122, 250);
 }
-#canvas-overlay {
-  position: absolute;
-  pointer-events: none;
-  z-index: 11;
-  max-width: 1200px;
-  height: auto;
-}
+
 #дляВыключателяНомеров, #дляВыключателяЛиний{
   width: 100%;
   height: 20px;
