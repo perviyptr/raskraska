@@ -7,7 +7,7 @@
 
   <title>Раскраска картинок онлайн. Coloring Pictures Online</title>
 
-  <meta name="description" content="Раскраска, раскраски «Девушки», раскраски «Персонажи аниме», раскраска «Антистресс», раскраски для взрослых, хохлома, из мультфильмов, раскраски «Лицо девушки», картины Рериха, раскраска по номерам, витражи, картины в стиле фэнтези, поп-арт, кубизм, модернизм">
+  <meta name="description" content="Раскраска, новогодние, раскраски «Девушки», раскраски «Персонажи аниме», раскраска «Антистресс», раскраски для взрослых, хохлома, из мультфильмов, раскраски «Лицо девушки», картины Рериха, раскраска по номерам, витражи, картины в стиле фэнтези, поп-арт, кубизм, модернизм">
 
   <meta name="google-site-verification" content="RRmEM3IqjaCEpt6We1ed1AZgbbe6PJmHKAfXhhju1iE" />
 
@@ -89,6 +89,14 @@ body{
   position: absolute;
   pointer-events: none;
   z-index: 11;
+  max-width: 800px;
+  height: auto;
+}
+
+ #canvas-overlay1 {
+  position: absolute;
+  pointer-events: none;
+  z-index: 12;
   max-width: 800px;
   height: auto;
 }
@@ -500,6 +508,8 @@ i{
   <canvas id="canvas1" class="canvas" width="550" height="550"></canvas>
   <canvas id="canvas2" class="canvas" width="550" height="550"></canvas>
   <img id="canvas-overlay" width="550" height="550" src="" onerror="this.style.display='none'">
+  <img id="canvas-overlay1" width="550" height="550">
+
 </div>
 
 <div class="paneli">
@@ -691,7 +701,7 @@ i{
 </div>
 
 <div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
-<h1 class ="kategorija_podborok">Девушки из сказки <font color="red" size="4">New!</font></h1>
+<h1 class ="kategorija_podborok">Девушки из сказки</h1>
 </div>
 
 
@@ -721,6 +731,43 @@ i{
 </div>
 
 <div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
+<h1 class ="kategorija_podborok">Новогодние.Снегурочки <font color="red" size="4">New!</font></h1>
+</div>
+
+
+<div class="nizniy_dla_kartinok">
+    <img class="kartinki" data-src="Ris12/23001.png">
+    <img class="kartinki" data-src="Ris12/23002.png">
+    <img class="kartinki" data-src="Ris12/23003.png">
+    <img class="kartinki" data-src="Ris12/23004.png">
+    <img class="kartinki" data-src="Ris12/23005.png">
+    <img class="kartinki" data-src="Ris12/23006.png">
+    <img class="kartinki" data-src="Ris12/23007.png">
+    <img class="kartinki" data-src="Ris12/23008.png">
+    <img class="kartinki" data-src="Ris12/23009.png">
+    <img class="kartinki" data-src="Ris12/23010.png">
+    <img class="kartinki" data-src="Ris12/23011.png">
+    <img class="kartinki" data-src="Ris12/23012.png">
+    <img class="kartinki" data-src="Ris12/23013.png">
+    <img class="kartinki" data-src="Ris12/23014.png">
+    <img class="kartinki" data-src="Ris12/23015.png">
+    <img class="kartinki" data-src="Ris12/23016.png">
+    <img class="kartinki" data-src="Ris12/23017.png">
+    <img class="kartinki" data-src="Ris12/23018.png">
+    <img class="kartinki" data-src="Ris12/23019.png">
+    <img class="kartinki" data-src="Ris12/23020.png">
+    <img class="kartinki" data-src="Ris12/23021.png">
+    <img class="kartinki" data-src="Ris12/23022.png">
+    <img class="kartinki" data-src="Ris12/23023.png">
+    <img class="kartinki" data-src="Ris12/23024.png">
+    <img class="kartinki" data-src="Ris12/23025.png">
+    <img class="kartinki" data-src="Ris12/23026.png">
+    <img class="kartinki" data-src="Ris12/23027.png">
+    <img class="kartinki" data-src="Ris12/23028.png">
+
+</div>
+
+<!-- <div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
 <h1 class ="kategorija_podborok">Простые</h1>
 </div>
 
@@ -754,7 +801,7 @@ i{
     <img class="kartinki" data-src="Ris12/475.png">
     <img class="kartinki" data-src="Ris12/476.png">
     <img class="kartinki" data-src="Ris12/477.png">
-</div>
+</div> -->
 
 <h1 id ="zagolovok3" onmousedown="return false" onselectstart="return false">РАСКРАСКИ ПО ОБРАЗЦАМ ЦВЕТОВ</h1>
 
@@ -1619,8 +1666,8 @@ i{
     <img class="kartinki_anime" data-src="Ris12/714.png">
     <img class="kartinki_anime" data-src="Ris12/715.png">
     <h3 id="blagodarnost">Использованы картинки (кроме двух первых) с сайта <a href="http://komotoz.ru/">komotoz.ru</a> </h3>
-</div> -->
-
+</div>
+ -->
 
 <h1 id ="zagolovok3" onmousedown="return false" onselectstart="return false">РАСКРАСКИ ПО КЛЕТОЧКАМ</h1>
 
@@ -1708,6 +1755,7 @@ const canvas2 = document.getElementById('canvas2');
 let canvas = canvas2;
 const container = document.getElementById('canvas-container');
 const overlay = document.getElementById('canvas-overlay');
+const overlay1 = document.getElementById('canvas-overlay1');
 const дляВыключателяНомеров = document.getElementById('дляВыключателяНомеров');
 const дляВыключателяЛиний = document.getElementById('дляВыключателяЛиний');
 const выключательДляНомеров = document.getElementById('выключательДляНомеров');
@@ -1913,6 +1961,8 @@ outlineImage.onload = function () {
   container.style.height = imageHeight + 'px';
   overlay.width = imageWidth;
   overlay.height = imageHeight;
+  overlay1.width = imageWidth;
+  overlay1.height = imageHeight;
   canvas1.width = imageWidth;
   canvas1.height = imageHeight;
   canvas2.width = imageWidth;
@@ -1981,6 +2031,10 @@ overlay.onload = function () {
   выключательДляНомеров.checked = true;
 };
 
+overlay1.onload = function () {
+  overlay1.style.removeProperty('display');
+};
+
 
 var kartinki = document.getElementsByClassName('kartinki');
 
@@ -1989,8 +2043,9 @@ for(let i = 0; i < kartinki.length; ++i){
     outlineImage.src = kartinki[i].src;
     overlay.classList.remove('hidden');
     overlay.src = kartinki[i].src.replace(/(\.png)/i, '_overlay$1');
+    overlay1.src = kartinki[i].src.replace(/(\.png)/i, '_overlay1$1');
     overlay.style.display = 'none';
-   дляВыключателяНомеров.classList.add('hidden');
+    дляВыключателяНомеров.classList.add('hidden');
     });
    kartinki[i].addEventListener('click', up);
 }
@@ -2131,6 +2186,7 @@ for(let i = 0; i < dla_kategoriy_podborok.length; i++){
 
 function ПереключитьВидимость(){
   overlay.classList.toggle('hidden', !выключательДляНомеров.checked);
+
 }
 
 
