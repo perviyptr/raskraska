@@ -7,7 +7,7 @@
 
   <title>Раскраска картинок онлайн. Coloring Pictures Online</title>
 
-  <meta name="description" content="Раскраска, новогодние, цветочная фея, раскраски «Девушки», раскраски «Персонажи аниме», раскраска «Антистресс», раскраски для взрослых, анимации, хохлома, из мультфильмов, раскраски «Лицо девушки», картины Рериха, раскраска по номерам, витражи, картины в стиле фэнтези, поп-арт, кубизм, модернизм">
+  <meta name="description" content="Раскраска, новогодние, цветочная фея, раскраски «Девушки», раскраски «Персонажи аниме», раскраска «Антистресс», раскраски для взрослых, анимации, хохлома, узоры_животные, из мультфильмов, раскраски «Лицо девушки», картины Рериха, раскраска по номерам, витражи, картины в стиле фэнтези, поп-арт, кубизм, модернизм">
 
   <meta name="google-site-verification" content="RRmEM3IqjaCEpt6We1ed1AZgbbe6PJmHKAfXhhju1iE" />
 
@@ -529,7 +529,8 @@ i{
     <img class="kartinki" src="Ris12/23026.png">
     <img class="kartinki" src="Ris12/17013.png">
     <img class="kartinki" src="Ris12/17023.png">
-    <img class="kartinki" src="Ris12/1726.png">
+    <!-- <img class="kartinki" src="Ris12/1726.png"> -->
+    <img class="kartinki" src="Ris12/26003.png">
     <img class="kartinki" src="Ris12/17003.png">
     <img class="kartinki" src="Ris12/18015.png">
     <img class="kartinki" src="Ris12/17022.png">
@@ -836,7 +837,7 @@ i{
 </div>
 
 
-<!-- <div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
+<div class="dla_kategoriy_podborok" onmousedown="return false" onselectstart="return false">
 <h1 class ="kategorija_podborok">Узоры. Животные <font color="red" size="4"> !!!</font></h1>
 </div>
 
@@ -849,7 +850,7 @@ i{
     <img class="kartinki" data-src="Ris12/26005.png">
     <img class="kartinki" data-src="Ris12/26006.png">
     <img class="kartinki" data-src="Ris12/26007.png">
-    <img class="kartinki" data-src="Ris12/26008.png">
+    <!-- <img class="kartinki" data-src="Ris12/26008.png">
     <img class="kartinki" data-src="Ris12/26009.png">
     <img class="kartinki" data-src="Ris12/26010.png">
     <img class="kartinki" data-src="Ris12/26011.png">
@@ -862,9 +863,9 @@ i{
     <img class="kartinki" data-src="Ris12/26018.png">
     <img class="kartinki" data-src="Ris12/26019.png">
     <img class="kartinki" data-src="Ris12/26020.png">
-    <img class="kartinki" data-src="Ris12/26021.png">
+    <img class="kartinki" data-src="Ris12/26021.png"> -->
 
-</div> -->
+</div>
 
 <!-- <h1 id ="zagolovok3" onmousedown="return false" onselectstart="return false">АНИМИРОВАННЫЕ РАСКРАСКИ</h1>
 
@@ -2076,6 +2077,7 @@ for(let i = 0; i < kartinki.length; ++i){
     overlay.src = kartinki[i].src.replace(/(\.png)/i, '_overlay$1');
     overlay1.src = kartinki[i].src.replace(/(\.png)/i, '_overlay1$1');
     overlay.style.display = 'none';
+    overlay1.style.display = 'none';
     дляВыключателяНомеров.classList.add('hidden');
     });
    kartinki[i].addEventListener('click', up);
