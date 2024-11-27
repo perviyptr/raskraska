@@ -62,7 +62,6 @@
 body{
   background-image: url('Ris12/фон.png');
   font-family: sans-serif;
-  margin-bottom: 50px;
 }
 
 #canvas-container {
@@ -288,11 +287,7 @@ i{
   margin-top: 20px;
   margin-bottom: 40px;
   /*font-style: italic;*/
-}
-
-.ssilka a {
-  line-height: 1.5;
-}
+}s
 
 #blagodarnost{
   text-align: center;
@@ -418,7 +413,6 @@ i{
   --mouse-x: 0px;
   --mouse-y: 0px;
 }
-
   </style>
 </head>
 
@@ -1786,6 +1780,7 @@ i{
 <p><a href="https://rutube.ru/video/70ea69d541d5566ecf2300e68260525f/"><!-- Для чего</a> на <a href="https://rutube.ru/">RUTUBE</a> -->
 </div>
 
+
 <div id="дляАнимированныхСсылок">
     <a href="https://perviyptr.github.io/uchebnik/"><img class="анимированныеСсылки" src="Ris12/uchebnik_anime.gif"></a>
     <a href="https://perviyptr.github.io/verstka/"><img class="анимированныеСсылки" src="Ris12/verstka_anime.gif"></a>
@@ -1801,14 +1796,13 @@ i{
 Посмотреть видео с песнями, сгенерированными искуственным интеллектом</a><br> -->
 </h3>
 
-
 <script type="text/javascript">
 
 const colorInput = document.querySelector('input.color');
 const выборщикЦветов = new CP(colorInput, false, document.querySelector('.colorpicker'));
 
 выборщикЦветов.on('change', color => {
-    colorInput.value = '#' + color;s
+    colorInput.value = '#' + color;
     colorInput.style.backgroundColor = '#' + color;
 
     currentColor = '#' + color;
