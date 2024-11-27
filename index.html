@@ -285,7 +285,7 @@ i{
 .ssilka{
   text-align: center;
   /*color: rgb(52, 84, 6);*/
-  margin-top: 40px;
+  margin-top: 20px;
   margin-bottom: 40px;
   /*font-style: italic;*/
 }
@@ -418,6 +418,7 @@ i{
   --mouse-x: 0px;
   --mouse-y: 0px;
 }
+
   </style>
 </head>
 
@@ -1775,26 +1776,30 @@ i{
     <img class="kartinki kartinki-grid" data-src="Ris12/627_grid.png">
 </div>
 
+<br>
+
+<h1 id ="zagolovok3"> Видео с песнями и изображениями,созданными искуственным интеллектом</h1>
+
+<div class="ssilka">
+<iframe width="400" height="225" src="https://rutube.ru/play/embed/56869ab83226f440dd02f1210894fd63/" frameBorder="0" allow="clipboard-write; autoplay" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe> <p><a href="https://rutube.ru/video/56869ab83226f440dd02f1210894fd63/"><!-- Премьера попурри из фрагментов песен, созданных искуственным интеллектом</a> на <a href="https://rutube.ru/">RUTUBE</a> -->
+<iframe width="400" height="225" src="https://rutube.ru/play/embed/70ea69d541d5566ecf2300e68260525f/" frameBorder="0" allow="clipboard-write; autoplay" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+<p><a href="https://rutube.ru/video/70ea69d541d5566ecf2300e68260525f/"><!-- Для чего</a> на <a href="https://rutube.ru/">RUTUBE</a> -->
+</div>
+
+<div id="дляАнимированныхСсылок">
+    <a href="https://perviyptr.github.io/uchebnik/"><img class="анимированныеСсылки" src="Ris12/uchebnik_anime.gif"></a>
+    <a href="https://perviyptr.github.io/verstka/"><img class="анимированныеСсылки" src="Ris12/verstka_anime.gif"></a>
+    <a href="https://perviyptr.github.io/Site_Zdorovoe_Pitanie/"><img class="анимированныеСсылки" src="Ris12/pitanie_anime.gif"></a>
+</div>
+
 <h3 class="ssilka"><!-- Для тех, кто верит в эзотерику или просто из любопытства. --><br>
 <a href="https://perviyptr.github.io/uchebnik/numerologia.html">
 Рассчитать число своего рождения с расшифровкой</a><br>
 <a href="https://perviyptr.github.io/uchebnik/TaroRasklad/index.html">
 Сделать раскладку на картах Таро с трактовкой</a><br>
-<a href="https://rutube.ru/video/56869ab83226f440dd02f1210894fd63/">
-Посмотреть видео с песнями, сгенерированными искуственным интеллектом</a><br>
+<!-- <a href="https://rutube.ru/video/56869ab83226f440dd02f1210894fd63/">
+Посмотреть видео с песнями, сгенерированными искуственным интеллектом</a><br> -->
 </h3>
-
-
-<!-- <h3 class="ssilka"> Ниже приведены ссылки на другие мои сайты:</h3> --><br>
-    <div id="дляАнимированныхСсылок">
-      <a href="https://perviyptr.github.io/uchebnik/"><img class="анимированныеСсылки" src="Ris12/uchebnik_anime.gif"></a>
-      <a href="https://perviyptr.github.io/verstka/"><img class="анимированныеСсылки" src="Ris12/verstka_anime.gif"></a>
-      <a href="https://perviyptr.github.io/Site_Zdorovoe_Pitanie/"><img class="анимированныеСсылки" src="Ris12/pitanie_anime.gif"></a>
-    </div>
-
-    <!-- <iframe width="400" height="225" src="https://rutube.ru/play/embed/56869ab83226f440dd02f1210894fd63/" frameBorder="0" allow="clipboard-write; autoplay" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-<p><a href="https://rutube.ru/video/56869ab83226f440dd02f1210894fd63/">Премьера попурри из фрагментов песен</a> на <a href="https://rutube.ru/">RUTUBE</a> -->
-
 
 
 <script type="text/javascript">
@@ -1803,7 +1808,7 @@ const colorInput = document.querySelector('input.color');
 const выборщикЦветов = new CP(colorInput, false, document.querySelector('.colorpicker'));
 
 выборщикЦветов.on('change', color => {
-    colorInput.value = '#' + color;
+    colorInput.value = '#' + color;s
     colorInput.style.backgroundColor = '#' + color;
 
     currentColor = '#' + color;
